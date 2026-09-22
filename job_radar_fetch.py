@@ -346,6 +346,43 @@ def seen_key(it):
     return "h:" + hashlib.sha1(base.encode("utf-8")).hexdigest()[:16]
 
 
+def short_key(k):
+    """16-hex digest of a seen key; this is what candidates.json and the state file carry."""
+    if re.fullmatch(r"[0-9a-f]{16}", k or ""):
+        return k
+    return hashlib.sha1(k.encode("utf-8")).hexdigest()[:16]
+
+
+def load_seen(path):
+    """Read the seen state. Accepts the v1 JSON {"seen": {key: date}} or the v2 line
+    format written by --seen-out (header line, then '<key> <YYYY-MM-DD>' per line).
+    Malformed lines are skipped, so a single typo cannot invalidate the whole state."""
+    try:
+        with open(path, encoding="utf-8") as f:
+            text = f.read()
+    except Exception as e:
+        print("WARN: could not read seen file: %s" % e, file=sys.stderr)
+        return {}, "missing"
+    t = text.strip()
+    # The Drive connector returns Google Docs as Markdown and escapes punctuation (\_ \& \* \~ ...).
+    # Undo every backslash escape that is not a legal JSON escape; hex keys and dates are unaffected.
+    t = re.sub(r"\\([^\"\\/bfnrtu])", r"\1", t)
+    if t.startswith("{"):
+        try:
+            return ((json.loads(t) or {}).get("seen", {}) or {}), "json"
+        except Exception as e:
+            print("WARN: seen JSON unreadable (%s); trying the line format" % e, file=sys.stderr)
+    seen = {}
+    for line in t.splitlines():
+        parts = line.strip().lstrip("\\").split()
+        if len(parts) < 2 or parts[0].startswith("jobradar-seen"):
+            continue
+        k, d = parts[0], parts[1]
+        if re.fullmatch(r"\d{4}-\d{2}-\d{2}", d) and (re.fullmatch(r"[0-9a-f]{16}", k) or k.startswith("http") or k.startswith("h:")):
+            seen[k] = d
+    return seen, "lines"
+
+
 # ----------------------------------------------------------------------------
 # Generic extractors
 # ----------------------------------------------------------------------------
@@ -1145,6 +1182,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--sources", default="sources.json")
     ap.add_argument("--seen", default=None)
+    ap.add_argument("--seen-out", default=None, help="write next week's seen state here (line format v2)")
     ap.add_argument("--out", default="candidates.json")
     ap.add_argument("--stats", default="stats.json")
     ap.add_argument("--skip", default="", help="comma list: employers,linkedin,eluta,jobbank,vector,getro,hn,ros,github,watch")
@@ -1160,15 +1198,12 @@ def main():
 
     with open(args.sources, encoding="utf-8") as f:
         cfg = json.load(f)
-    seen = {}
+    seen, seen_fmt = ({}, "none")
     if args.seen:
-        try:
-            with open(args.seen, encoding="utf-8") as f:
-                seen = (json.load(f) or {}).get("seen", {}) or {}
-        except Exception as e:
-            print("WARN: could not read seen file: %s" % e, file=sys.stderr)
+        seen, seen_fmt = load_seen(args.seen)
 
-    stats = {"run_date": TODAY.isoformat(), "employers": {}, "aggregators": {}, "github": {}, "watch": [], "filters": {}}
+    stats = {"run_date": TODAY.isoformat(), "employers": {}, "aggregators": {}, "github": {}, "watch": [], "filters": {},
+             "seen_loaded": {"entries": len(seen), "format": seen_fmt}}
     raw = []
 
     # employers (threaded)
@@ -1229,7 +1264,8 @@ def main():
             reasons[reason] = reasons.get(reason, 0) + 1
             continue
         key = seen_key(it)
-        if key in seen:
+        sk = short_key(key)
+        if key in seen or sk in seen:
             counts["seen"] += 1
             continue
         if key in keep:
@@ -1237,7 +1273,7 @@ def main():
             # merge sources
             keep[key]["sources"] = sorted(set(keep[key].get("sources", [keep[key]["source"]]) + [it["source"]]))
             continue
-        it["key"] = key
+        it["key"] = sk
         it["flags"] = flags
         it["sources"] = [it["source"]]
         keep[key] = it
@@ -1259,6 +1295,20 @@ def main():
     if len(cands) > args.cap:
         stats["filters"]["capped_from"] = len(cands)
         cands = cands[: args.cap]
+    # next week's state: old entries younger than 150 days (re-keyed to short keys) plus every candidate written
+    if args.seen_out:
+        cutoff = (TODAY - dt.timedelta(days=150)).isoformat()
+        nxt = {}
+        for k, d in seen.items():
+            if isinstance(d, str) and d >= cutoff:
+                nxt[short_key(k)] = d
+        for x in cands:
+            nxt[x["key"]] = TODAY.isoformat()
+        with open(args.seen_out, "w", encoding="utf-8", newline="\n") as f:
+            f.write("jobradar-seen v2 %s %d\n" % (TODAY.isoformat(), len(nxt)))
+            for k in sorted(nxt):
+                f.write("%s %s\n" % (k, nxt[k]))
+        stats["seen_out"] = {"path": args.seen_out, "entries": len(nxt), "carried": len(nxt) - len(cands)}
     stats["elapsed_secs"] = round(time.time() - t_start, 1)
     stats["candidates_written"] = len(cands)
 
