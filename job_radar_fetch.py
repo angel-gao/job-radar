@@ -1191,7 +1191,7 @@ def main():
     ap.add_argument("--workers", type=int, default=8)
     ap.add_argument("--max-per-source", type=int, default=300)
     ap.add_argument("--max-per-company", type=int, default=40)
-    ap.add_argument("--cap", type=int, default=500)
+    ap.add_argument("--cap", type=int, default=800)
     args = ap.parse_args()
     skip = set(x.strip() for x in args.skip.split(",") if x.strip())
     t_start = time.time()
