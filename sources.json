@@ -1,0 +1,2195 @@
+{
+ "version": 1,
+ "generated": "2026-09-21",
+ "notes": "Every URL was fetched successfully on 2026-09-13 by the research workflow wf_39809d1e-6ca (see ../research/). ats = parser name in job_radar_fetch.py. clearance_risk: high = most postings citizenship/clearance gated; medium = some; low = none seen. french_likely = Quebec employer where French is usually required.",
+ "employers": [
+  {
+   "name": "ATS Corporation",
+   "sector": "robotics",
+   "cities": [
+    "Cambridge, ON",
+    "Woodbridge, ON"
+   ],
+   "ats": "successfactors_html",
+   "url": "https://jobs.atsautomation.com/search/?q=&locationsearch=Ontario",
+   "careers_url": "https://jobs.atsautomation.com/",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "program": "Entry & New Graduates category",
+   "program_watch_url": "https://jobs.atsautomation.com/go/Entry-&-New-Graduates/"
+  },
+  {
+   "name": "Avidbots",
+   "sector": "robotics",
+   "cities": [
+    "Kitchener, ON"
+   ],
+   "ats": "bamboohr",
+   "url": "https://avidbots.bamboohr.com/careers/list",
+   "careers_url": "https://avidbots.com/company/careers/",
+   "clearance_risk": "low",
+   "french_likely": false
+  },
+  {
+   "name": "Clearpath Robotics / OTTO / Rockwell Automation",
+   "sector": "robotics",
+   "cities": [
+    "Kitchener, ON",
+    "Waterloo, ON",
+    "Cambridge, ON",
+    "Brampton, ON"
+   ],
+   "ats": "workday",
+   "url": "https://rockwellautomation.wd1.myworkdayjobs.com/wday/cxs/rockwellautomation/External_Rockwell_Automation/jobs",
+   "search_terms": [
+    "Ontario",
+    "Kitchener",
+    "Cambridge",
+    "EDGE"
+   ],
+   "careers_url": "https://ottomotors.com/careers/",
+   "clearance_risk": "medium",
+   "french_likely": false,
+   "program": "EDGE early-career rotational program",
+   "program_watch_url": "https://www.rockwellautomation.com/en-ca/careers/edge-student-early-career/edge-early-career.html"
+  },
+  {
+   "name": "FANUC Canada",
+   "sector": "robotics",
+   "cities": [
+    "Mississauga, ON",
+    "Blainville, QC"
+   ],
+   "ats": "html_generic",
+   "url": "https://www.fanucamerica.com/careers",
+   "careers_url": "https://www.fanucamerica.com/careers",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "notes": "sales/service site; low priority"
+  },
+  {
+   "name": "Haply Robotics",
+   "sector": "robotics",
+   "cities": [
+    "Montreal, QC"
+   ],
+   "ats": "html_generic",
+   "url": "https://haply.odoo.com/jobs",
+   "careers_url": "https://www.haply.co/careers",
+   "clearance_risk": "low",
+   "french_likely": false
+  },
+  {
+   "name": "InDro Robotics",
+   "sector": "robotics",
+   "cities": [
+    "Ottawa, ON",
+    "Arnprior, ON"
+   ],
+   "ats": "html_generic",
+   "url": "https://indrorobotics.ca/robotics-innovators/",
+   "careers_url": "https://indrorobotics.ca/robotics-innovators/",
+   "clearance_risk": "low",
+   "french_likely": false
+  },
+  {
+   "name": "Kinova",
+   "sector": "robotics",
+   "cities": [
+    "Boisbriand, QC"
+   ],
+   "ats": "html_generic",
+   "url": "https://www.kinovarobotics.com/career",
+   "careers_url": "https://www.kinovarobotics.com/career",
+   "clearance_risk": "low",
+   "french_likely": true
+  },
+  {
+   "name": "MDA Space",
+   "sector": "robotics",
+   "cities": [
+    "Brampton, ON",
+    "Kanata, ON",
+    "Sainte-Anne-de-Bellevue, QC"
+   ],
+   "ats": "json_generic",
+   "url": "https://recruiting.ultipro.ca/MAC5000MCDW/JobBoard/664818ff-3594-4bec-9f30-3394e59e19f3/JobBoardView/LoadSearchResults",
+   "method": "POST",
+   "body": {
+    "opportunitySearch": {
+     "Top": 200,
+     "Wildcard": "",
+     "Fields": [
+      {
+       "Name": "",
+       "Value": ""
+      }
+     ]
+    }
+   },
+   "careers_url": "https://mda.space/careers",
+   "clearance_risk": "medium",
+   "french_likely": false
+  },
+  {
+   "name": "NuPort Robotics",
+   "sector": "robotics",
+   "cities": [
+    "Toronto, ON"
+   ],
+   "ats": "json_generic",
+   "url": "https://cdn.commoninja.com/api/v1/embed/3d80129b-205a-4b0a-a14d-f874d203ab77",
+   "careers_url": "https://www.nuport.ai/career",
+   "clearance_risk": "low",
+   "french_likely": false
+  },
+  {
+   "name": "Robotiq",
+   "sector": "robotics",
+   "cities": [
+    "Levis, QC"
+   ],
+   "ats": "bamboohr",
+   "url": "https://robotiq.bamboohr.com/careers/list",
+   "careers_url": "https://robotiq.com/about/careers",
+   "clearance_risk": "low",
+   "french_likely": true
+  },
+  {
+   "name": "Synaptive Medical",
+   "sector": "robotics",
+   "cities": [
+    "Mississauga, ON"
+   ],
+   "ats": "none",
+   "url": "https://jobs.dayforcehcm.com/api/geo/pp4h663/jobposting/search",
+   "method": "POST",
+   "body": {
+    "clientNamespace": "pp4h663",
+    "jobBoardCode": "CANDIDATEPORTAL",
+    "cultureCode": "en-US",
+    "distanceUnit": 0,
+    "paginationStart": 0
+   },
+   "careers_url": "https://jobs.dayforcehcm.com/en-US/pp4h663/CANDIDATEPORTAL",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "headers": {
+    "Origin": "https://jobs.dayforcehcm.com",
+    "Referer": "https://jobs.dayforcehcm.com/en-US/pp4h663/CANDIDATEPORTAL",
+    "Accept": "application/json"
+   },
+   "notes": "board blocks scripted access (405/403 on 2026-09-21); covered by aggregators"
+  },
+  {
+   "name": "Teledyne DALSA / FLIR / Optech",
+   "sector": "robotics",
+   "cities": [
+    "Waterloo, ON",
+    "Concord, ON",
+    "Ottawa, ON",
+    "Laval, QC"
+   ],
+   "ats": "workday",
+   "url": "https://flir.wd1.myworkdayjobs.com/wday/cxs/flir/flircareers/jobs",
+   "search_terms": [
+    "Waterloo",
+    "Ontario",
+    "Canada"
+   ],
+   "careers_url": "https://flir.wd1.myworkdayjobs.com/flircareers/jobs",
+   "clearance_risk": "medium",
+   "french_likely": false
+  },
+  {
+   "name": "Vention",
+   "sector": "robotics",
+   "cities": [
+    "Montreal, QC"
+   ],
+   "ats": "json_generic",
+   "url": "https://vention.com/public_api/careers/jobs_list?language=en&locale=en",
+   "careers_url": "https://vention.com/careers",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "headers": {
+    "Accept": "application/json"
+   }
+  },
+  {
+   "name": "Mecademic Robotics",
+   "sector": "robotics",
+   "cities": [
+    "Montreal, QC"
+   ],
+   "ats": "html_generic",
+   "url": "https://jobs.glowinthecloud.com/mecademic?l=en",
+   "careers_url": "https://jobs.glowinthecloud.com/mecademic?l=en",
+   "clearance_risk": "low",
+   "french_likely": true
+  },
+  {
+   "name": "OPAL-RT Technologies",
+   "sector": "robotics",
+   "cities": [
+    "Montreal, QC"
+   ],
+   "ats": "bamboohr",
+   "url": "https://opalrt.bamboohr.com/careers/list",
+   "careers_url": "https://www.opal-rt.com/careers/",
+   "clearance_risk": "low",
+   "french_likely": true
+  },
+  {
+   "name": "Swap Robotics",
+   "sector": "robotics",
+   "cities": [
+    "Kitchener, ON"
+   ],
+   "ats": "bamboohr",
+   "url": "https://swaprobotics.bamboohr.com/careers/list",
+   "careers_url": "https://www.swaprobotics.com/careers",
+   "clearance_risk": "low",
+   "french_likely": false
+  },
+  {
+   "name": "Deep Trekker",
+   "sector": "robotics",
+   "cities": [
+    "Kitchener, ON"
+   ],
+   "ats": "html_generic",
+   "url": "https://www.deeptrekker.com/company/careers",
+   "careers_url": "https://www.deeptrekker.com/company/careers",
+   "clearance_risk": "low",
+   "french_likely": false
+  },
+  {
+   "name": "Acerta Analytics",
+   "sector": "robotics",
+   "cities": [
+    "Kitchener, ON"
+   ],
+   "ats": "bamboohr",
+   "url": "https://acerta.bamboohr.com/careers/list",
+   "careers_url": "https://acerta.ai/careers/",
+   "clearance_risk": "low",
+   "french_likely": false
+  },
+  {
+   "name": "Bluewrist",
+   "sector": "robotics",
+   "cities": [
+    "Markham, ON"
+   ],
+   "ats": "html_generic",
+   "url": "https://bluewrist.com/careers/",
+   "careers_url": "https://bluewrist.com/careers/",
+   "clearance_risk": "low",
+   "french_likely": false
+  },
+  {
+   "name": "Promation",
+   "sector": "robotics",
+   "cities": [
+    "Oakville, ON"
+   ],
+   "ats": "html_generic",
+   "url": "https://promation.com/culture-and-careers/",
+   "careers_url": "https://promation.com/culture-and-careers/",
+   "clearance_risk": "medium",
+   "french_likely": false
+  },
+  {
+   "name": "MacLean Engineering",
+   "sector": "robotics",
+   "cities": [
+    "Collingwood, ON",
+    "Sudbury, ON",
+    "North Bay, ON"
+   ],
+   "ats": "html_generic",
+   "url": "https://macleanengineering.com/jobs/",
+   "careers_url": "https://macleanengineering.com/jobs/",
+   "clearance_risk": "low",
+   "french_likely": false
+  },
+  {
+   "name": "Ocado Group Toronto Development Centre",
+   "sector": "robotics",
+   "cities": [
+    "Toronto, ON"
+   ],
+   "ats": "greenhouse",
+   "url": "https://boards-api.greenhouse.io/v1/boards/ocadogroup/jobs?content=true",
+   "careers_url": "https://careers.ocadogroup.com/jobs",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "program": "Early careers pathways",
+   "program_watch_url": "https://careers.ocadogroup.com/teams/early-careers"
+  },
+  {
+   "name": "Eddyfi Technologies",
+   "sector": "robotics",
+   "cities": [
+    "Quebec City, QC"
+   ],
+   "ats": "html_generic",
+   "url": "https://www.eddyfi.com/en/careers",
+   "careers_url": "https://www.eddyfi.com/en/careers",
+   "clearance_risk": "medium",
+   "french_likely": true
+  },
+  {
+   "name": "Creaform (FARO / AMETEK)",
+   "sector": "robotics",
+   "cities": [
+    "Levis, QC",
+    "Laval, QC"
+   ],
+   "ats": "successfactors_html",
+   "url": "https://jobs.ametek.com/search/?q=creaform",
+   "careers_url": "https://www.creaform3d.com/en/careers",
+   "clearance_risk": "low",
+   "french_likely": true
+  },
+  {
+   "name": "Kongsberg Geospatial",
+   "sector": "robotics",
+   "cities": [
+    "Ottawa, ON"
+   ],
+   "ats": "html_generic",
+   "url": "https://www.kongsberggeospatial.com/company/careers",
+   "careers_url": "https://www.kongsberggeospatial.com/company/careers",
+   "clearance_risk": "medium",
+   "french_likely": false,
+   "notes": "not verified by the research (batch lost)"
+  },
+  {
+   "name": "Christie Digital",
+   "sector": "robotics",
+   "cities": [
+    "Kitchener, ON"
+   ],
+   "ats": "html_generic",
+   "url": "https://www.christiedigital.com/about/careers/",
+   "careers_url": "https://www.christiedigital.com/about/careers/",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "notes": "not verified by the research (batch lost)"
+  },
+  {
+   "name": "Applied Brain Research",
+   "sector": "robotics",
+   "cities": [
+    "Waterloo, ON"
+   ],
+   "ats": "html_generic",
+   "url": "https://www.appliedbrainresearch.com/our-company/careers",
+   "careers_url": "https://www.appliedbrainresearch.com/our-company/careers",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "notes": "not verified by the research (batch lost)"
+  },
+  {
+   "name": "Alstom Canada",
+   "sector": "automotive",
+   "cities": [
+    "Toronto, ON",
+    "Ottawa, ON",
+    "Kingston, ON",
+    "Montreal, QC",
+    "Saint-Bruno, QC"
+   ],
+   "ats": "successfactors_html",
+   "url": "https://jobsearch.alstom.com/search/?createNewAlert=false&q=&locationsearch=Canada",
+   "careers_url": "https://jobsearch.alstom.com/",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "program": "Job Type: Graduate tag on early-career reqs"
+  },
+  {
+   "name": "BRP",
+   "sector": "automotive",
+   "cities": [
+    "Valcourt, QC",
+    "Sherbrooke, QC",
+    "Montreal, QC"
+   ],
+   "ats": "html_generic",
+   "url": "https://careers.brp.com/global/en/search-results?keywords=engineer",
+   "careers_url": "https://careers.brp.com/global/en",
+   "clearance_risk": "low",
+   "french_likely": true
+  },
+  {
+   "name": "BlackBerry QNX",
+   "sector": "automotive",
+   "cities": [
+    "Ottawa, ON",
+    "Waterloo, ON",
+    "Toronto, ON"
+   ],
+   "ats": "workday",
+   "url": "https://bb.wd3.myworkdayjobs.com/wday/cxs/bb/QNX/jobs",
+   "search_terms": [
+    "",
+    "student",
+    "junior"
+   ],
+   "careers_url": "https://www.blackberry.com/en/careers",
+   "clearance_risk": "low",
+   "french_likely": false
+  },
+  {
+   "name": "Dana TM4",
+   "sector": "automotive",
+   "cities": [
+    "Boucherville, QC",
+    "Cambridge, ON",
+    "Oakville, ON"
+   ],
+   "ats": "successfactors_html",
+   "url": "https://jobs.dana.com/search/?q=&locationsearch=Canada",
+   "careers_url": "https://jobs.dana.com/go/Engineering/9137600/",
+   "clearance_risk": "low",
+   "french_likely": false
+  },
+  {
+   "name": "Ford Motor Company of Canada",
+   "sector": "automotive",
+   "cities": [
+    "Ottawa, ON",
+    "Waterloo, ON",
+    "Oakville, ON",
+    "Windsor, ON"
+   ],
+   "ats": "radancy_json",
+   "url": "https://www.careers.ford.com/en/search-jobs/results?ActiveFacetID=0&CurrentPage=1&RecordsPerPage=25&Distance=50&RadiusUnitType=0&Keywords=&Location=Ontario%2C%20Canada&ShowRadius=False&IsPagination=False&CustomFacetName=&FacetTerm=&FacetType=0&SearchResultsModuleName=Search+Results&SearchFiltersModuleName=Search+Filters&SortCriteria=0&SortDirection=0&SearchType=5",
+   "careers_url": "https://www.careers.ford.com/canada-jobs",
+   "clearance_risk": "low",
+   "french_likely": false
+  },
+  {
+   "name": "General Motors of Canada (CTC)",
+   "sector": "automotive",
+   "cities": [
+    "Markham, ON",
+    "Oshawa, ON"
+   ],
+   "ats": "workday",
+   "url": "https://generalmotors.wd5.myworkdayjobs.com/wday/cxs/generalmotors/Careers_GM/jobs",
+   "search_terms": [
+    "Markham",
+    "Oshawa",
+    "Canada early career"
+   ],
+   "careers_url": "https://search-careers.gm.com/en/locations/canada/",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "program": "Student/co-op program; early-career software roles"
+  },
+  {
+   "name": "Geotab",
+   "sector": "automotive",
+   "cities": [
+    "Oakville, ON",
+    "Waterloo, ON",
+    "Toronto, ON"
+   ],
+   "ats": "greenhouse",
+   "url": "https://boards-api.greenhouse.io/v1/boards/geotab/jobs?content=true",
+   "careers_url": "https://careers.geotab.com/",
+   "clearance_risk": "low",
+   "french_likely": false
+  },
+  {
+   "name": "Honda of Canada Mfg",
+   "sector": "automotive",
+   "cities": [
+    "Alliston, ON"
+   ],
+   "ats": "html_generic",
+   "url": "https://www.hondacanadamfg.ca/join-our-team/",
+   "careers_url": "https://www.hondacanadamfg.ca/join-our-team/",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "program": "New Graduates at HCM"
+  },
+  {
+   "name": "Linamar",
+   "sector": "automotive",
+   "cities": [
+    "Guelph, ON"
+   ],
+   "ats": "oracle_hcm",
+   "url": "https://fa-epmd-saasfaprod1.fa.ocs.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions?onlyData=true&expand=requisitionList.secondaryLocations&finder=findReqs;siteNumber=CX_1,limit=100,offset=0,sortBy=POSTING_DATES_DESC",
+   "careers_url": "https://www.linamar.com/students-graduates/",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "program": "New Graduate Rotation / co-op",
+   "program_watch_url": "https://www.linamar.com/students-graduates/"
+  },
+  {
+   "name": "Magna International",
+   "sector": "automotive",
+   "cities": [
+    "Aurora, ON",
+    "Brampton, ON",
+    "Newmarket, ON",
+    "Concord, ON",
+    "Milton, ON",
+    "Guelph, ON"
+   ],
+   "ats": "workday",
+   "url": "https://wd3.myworkdaysite.com/wday/cxs/magna/Magna/jobs",
+   "search_terms": [
+    "Ontario",
+    "junior",
+    "engineer Ontario"
+   ],
+   "careers_url": "https://www.magna.com/canada-recruiting",
+   "clearance_risk": "low",
+   "french_likely": false
+  },
+  {
+   "name": "Miovision",
+   "sector": "automotive",
+   "cities": [
+    "Kitchener, ON"
+   ],
+   "ats": "ashby",
+   "url": "https://api.ashbyhq.com/posting-api/job-board/miovision",
+   "careers_url": "https://miovision.com/company/careers/",
+   "clearance_risk": "low",
+   "french_likely": false
+  },
+  {
+   "name": "Multimatic",
+   "sector": "automotive",
+   "cities": [
+    "Markham, ON",
+    "Concord, ON",
+    "Newmarket, ON"
+   ],
+   "ats": "workday",
+   "url": "https://multimatic.wd10.myworkdayjobs.com/wday/cxs/multimatic/MMEC/jobs",
+   "search_terms": [
+    "engineer",
+    "",
+    "co-op"
+   ],
+   "careers_url": "https://www.multimatic.com/careers",
+   "clearance_risk": "low",
+   "french_likely": false
+  },
+  {
+   "name": "Toyota Motor Manufacturing Canada",
+   "sector": "automotive",
+   "cities": [
+    "Cambridge, ON",
+    "Woodstock, ON"
+   ],
+   "ats": "html_generic",
+   "url": "https://toyotamotorjobs.tmmc.ca/x/openings",
+   "careers_url": "https://toyotamotorjobs.tmmc.ca/",
+   "clearance_risk": "low",
+   "french_likely": false
+  },
+  {
+   "name": "Waabi",
+   "sector": "automotive",
+   "cities": [
+    "Toronto, ON"
+   ],
+   "ats": "lever",
+   "url": "https://api.lever.co/v0/postings/waabi?mode=json",
+   "careers_url": "https://waabi.ai/careers",
+   "clearance_risk": "low",
+   "french_likely": false
+  },
+  {
+   "name": "Litens Automotive",
+   "sector": "automotive",
+   "cities": [
+    "Concord, ON"
+   ],
+   "ats": "html_generic",
+   "url": "https://www.litens.com/careers/",
+   "careers_url": "https://www.litens.com/careers/",
+   "clearance_risk": "low",
+   "french_likely": false
+  },
+  {
+   "name": "Volvo Group / Nova Bus / Prevost",
+   "sector": "automotive",
+   "cities": [
+    "Saint-Eustache, QC",
+    "Sainte-Claire, QC"
+   ],
+   "ats": "successfactors_html",
+   "url": "https://jobs.volvogroup.com/search/?q=&locationsearch=Quebec",
+   "careers_url": "https://novabus.com/en/career/",
+   "clearance_risk": "low",
+   "french_likely": true
+  },
+  {
+   "name": "Airbus Canada / Airbus Atlantic / NAVBLUE",
+   "sector": "aerospace",
+   "cities": [
+    "Mirabel, QC",
+    "Montreal, QC",
+    "Fort Erie, ON",
+    "Waterloo, ON"
+   ],
+   "ats": "workday",
+   "url": "https://ag.wd3.myworkdayjobs.com/wday/cxs/ag/Airbus/jobs",
+   "body_facets": {
+    "locationCountry": [
+     "a30a87ed25634629aa6c3958aa2b91ea"
+    ]
+   },
+   "search_terms": [
+    "",
+    "engineer"
+   ],
+   "careers_url": "https://www.airbus.com/en/careers/life-at-airbus/working-here/working-at-airbus-in-canada",
+   "clearance_risk": "low",
+   "french_likely": true
+  },
+  {
+   "name": "Aversan",
+   "sector": "aerospace",
+   "cities": [
+    "Mississauga, ON"
+   ],
+   "ats": "html_generic",
+   "url": "https://www.aversan.com/careers/",
+   "careers_url": "https://www.aversan.com/careers/",
+   "clearance_risk": "medium",
+   "french_likely": false
+  },
+  {
+   "name": "Bell Textron Canada",
+   "sector": "aerospace",
+   "cities": [
+    "Mirabel, QC"
+   ],
+   "ats": "html_generic",
+   "url": "https://textron.taleo.net/careersection/bell/moresearch.ftl?lang=en",
+   "careers_url": "https://www.bellflight.com/company/careers",
+   "clearance_risk": "low",
+   "french_likely": true
+  },
+  {
+   "name": "Bombardier",
+   "sector": "aerospace",
+   "cities": [
+    "Dorval, QC",
+    "Saint-Laurent, QC",
+    "Mississauga, ON"
+   ],
+   "ats": "successfactors_rss",
+   "url": "https://jobs.bombardier.com/services/rss/job/?locale=en_US&keywords=engineer",
+   "careers_url": "https://jobs.bombardier.com/",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "program": "ECAP Engineering Career Acceleration Program (annual window)",
+   "program_watch_url": "https://bombardier.com/en/careers/new-graduate-programs/engineering-career-accelerated-program-canada"
+  },
+  {
+   "name": "CAE",
+   "sector": "aerospace",
+   "cities": [
+    "Saint-Laurent, QC"
+   ],
+   "ats": "workday",
+   "url": "https://cae.wd3.myworkdayjobs.com/wday/cxs/cae/career/jobs",
+   "search_terms": [
+    "engineer",
+    "Montreal"
+   ],
+   "careers_url": "https://www.cae.com/careers/",
+   "clearance_risk": "medium",
+   "french_likely": true
+  },
+  {
+   "name": "Calian Advanced Technologies",
+   "sector": "aerospace",
+   "cities": [
+    "Ottawa, ON",
+    "Montreal, QC",
+    "Gatineau, QC"
+   ],
+   "ats": "json_generic",
+   "url": "https://careers.calian.com/app/themes/tbk-ba3e-theme/api/wp/career-search?location=ontario&currentPage=1&loadingMore=0&perPage=100",
+   "careers_url": "https://careers.calian.com/careers/",
+   "clearance_risk": "medium",
+   "french_likely": false
+  },
+  {
+   "name": "CMC Electronics",
+   "sector": "aerospace",
+   "cities": [
+    "Montreal, QC",
+    "Ottawa, ON"
+   ],
+   "ats": "html_generic",
+   "url": "https://careers.cmcelectronics.ca/en/search/",
+   "careers_url": "https://cmcelectronics.ca/careers/",
+   "clearance_risk": "medium",
+   "french_likely": true
+  },
+  {
+   "name": "GHGSat",
+   "sector": "aerospace",
+   "cities": [
+    "Montreal, QC"
+   ],
+   "ats": "workable_v3",
+   "url": "https://apply.workable.com/api/v3/accounts/ghgsat/jobs",
+   "careers_url": "https://apply.workable.com/ghgsat/",
+   "clearance_risk": "medium",
+   "french_likely": false
+  },
+  {
+   "name": "General Dynamics Land Systems Canada",
+   "sector": "aerospace",
+   "cities": [
+    "London, ON"
+   ],
+   "ats": "none",
+   "url": "https://generaldynamics-ca-careers.ttcportals.com/search/jobs",
+   "careers_url": "https://www.gdlscanada.com/careers/",
+   "clearance_risk": "medium",
+   "french_likely": false,
+   "notes": "HTTP 403 to scripts on 2026-09-21; covered by aggregators"
+  },
+  {
+   "name": "General Dynamics Mission Systems Canada",
+   "sector": "aerospace",
+   "cities": [
+    "Ottawa, ON",
+    "Sherbrooke, QC"
+   ],
+   "ats": "html_generic",
+   "url": "https://gdmissionsystems.ca/careers",
+   "careers_url": "https://gdmissionsystems.ca/careers",
+   "clearance_risk": "medium",
+   "french_likely": false,
+   "program": "Co-op program"
+  },
+  {
+   "name": "Honeywell Aerospace Canada",
+   "sector": "aerospace",
+   "cities": [
+    "Mississauga, ON",
+    "Kanata, ON",
+    "Cambridge, ON"
+   ],
+   "ats": "oracle_hcm",
+   "url": "https://icfcjb.fa.ocs.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions?onlyData=true&expand=requisitionList.secondaryLocations&finder=findReqs;siteNumber=CX_1,limit=200,offset=0,keyword=engineer,sortBy=POSTING_DATES_DESC",
+   "careers_url": "https://www.honeywellaerospace.com/us/en/company/careers",
+   "clearance_risk": "medium",
+   "french_likely": false,
+   "program": "Engineer I / Test Engineer I campus-level reqs"
+  },
+  {
+   "name": "Kepler Communications",
+   "sector": "aerospace",
+   "cities": [
+    "Toronto, ON"
+   ],
+   "ats": "lever",
+   "url": "https://api.lever.co/v0/postings/kepler?mode=json",
+   "careers_url": "https://kepler.space/careers/",
+   "clearance_risk": "low",
+   "french_likely": false
+  },
+  {
+   "name": "L3Harris WESCAM / Canada",
+   "sector": "aerospace",
+   "cities": [
+    "Waterdown, ON",
+    "Toronto, ON",
+    "Ottawa, ON",
+    "Montreal, QC",
+    "Mirabel, QC"
+   ],
+   "ats": "radancy_json",
+   "url": "https://careers.l3harris.com/en/search-jobs/results?ActiveFacetID=0&CurrentPage=1&RecordsPerPage=25&Distance=50&RadiusUnitType=0&Keywords=&ShowRadius=False&IsPagination=False&SearchResultsModuleName=Search+Results&SearchFiltersModuleName=Search+Filters&SortCriteria=1&SortDirection=1&SearchType=5",
+   "careers_url": "https://careers.l3harris.com/en/ontario-canada",
+   "clearance_risk": "medium",
+   "french_likely": false,
+   "program": "New Grads category"
+  },
+  {
+   "name": "Lockheed Martin Canada",
+   "sector": "aerospace",
+   "cities": [
+    "Ottawa, ON",
+    "Montreal, QC"
+   ],
+   "ats": "none",
+   "url": "",
+   "careers_url": "https://www.lockheedmartin.com/en-ca/careers.html",
+   "clearance_risk": "high",
+   "french_likely": false,
+   "notes": "clearance-heavy; covered by LinkedIn/Eluta only"
+  },
+  {
+   "name": "Magellan Aerospace",
+   "sector": "aerospace",
+   "cities": [
+    "Mississauga, ON",
+    "Kitchener, ON"
+   ],
+   "ats": "successfactors_html",
+   "url": "https://careers.magellan.aero/search/?q=&locationsearch=Ontario",
+   "careers_url": "https://careers.magellan.aero/",
+   "clearance_risk": "medium",
+   "french_likely": false
+  },
+  {
+   "name": "Mission Control Space Services",
+   "sector": "aerospace",
+   "cities": [
+    "Ottawa, ON"
+   ],
+   "ats": "bamboohr",
+   "url": "https://mcss.bamboohr.com/careers/list",
+   "careers_url": "https://missioncontrolspace.com/about/careers/",
+   "clearance_risk": "high",
+   "french_likely": false
+  },
+  {
+   "name": "NGC Aerospace",
+   "sector": "aerospace",
+   "cities": [
+    "Sherbrooke, QC"
+   ],
+   "ats": "json_generic",
+   "url": "https://career.ngcaerospace.com/wp-json/wp/v2/careers?per_page=30",
+   "careers_url": "https://career.ngcaerospace.com/",
+   "clearance_risk": "low",
+   "french_likely": true
+  },
+  {
+   "name": "National Research Council Canada",
+   "sector": "research",
+   "cities": [
+    "Ottawa, ON",
+    "Mississauga, ON",
+    "Boucherville, QC"
+   ],
+   "ats": "successfactors_html",
+   "url": "https://recruitment-recrutement.nrc-cnrc.gc.ca/search/?q=",
+   "careers_url": "https://nrc.canada.ca/en/corporate/careers",
+   "clearance_risk": "medium",
+   "french_likely": false,
+   "program": "Preference to citizens/PRs (flag); Research Associate needs Master's/PhD"
+  },
+  {
+   "name": "NordSpace",
+   "sector": "aerospace",
+   "cities": [
+    "Markham, ON"
+   ],
+   "ats": "json_generic",
+   "url": "https://api.collage.co/v1/positions/nordspace",
+   "careers_url": "https://www.nordspace.com/careers",
+   "clearance_risk": "medium",
+   "french_likely": false
+  },
+  {
+   "name": "Pratt & Whitney Canada (RTX)",
+   "sector": "aerospace",
+   "cities": [
+    "Longueuil, QC",
+    "Saint-Hubert, QC",
+    "Mirabel, QC",
+    "Mississauga, ON"
+   ],
+   "ats": "workday",
+   "url": "https://globalhr.wd5.myworkdayjobs.com/wday/cxs/globalhr/REC_RTX_Ext_Gateway/jobs",
+   "search_terms": [
+    "Longueuil",
+    "Mississauga Pratt",
+    "New Graduate Rotation",
+    "nouveaux gradues"
+   ],
+   "careers_url": "https://careers.rtx.com/global/en/pratt-whitney",
+   "clearance_risk": "medium",
+   "french_likely": true,
+   "program": "Engineer / Technologist New Graduate Rotation Program 2027 (Longueuil)"
+  },
+  {
+   "name": "Safran Canada",
+   "sector": "aerospace",
+   "cities": [
+    "Mirabel, QC",
+    "Kirkland, QC",
+    "Ajax, ON",
+    "London, ON"
+   ],
+   "ats": "none",
+   "url": "https://www.safran-group.com/fr/offres?countries%5B0%5D=894-canada",
+   "careers_url": "https://www.safran-group.com/fr/offres?countries%5B0%5D=894-canada",
+   "clearance_risk": "low",
+   "french_likely": true,
+   "notes": "HTTP 403 to scripts on 2026-09-21; covered by aggregators"
+  },
+  {
+   "name": "Telesat",
+   "sector": "aerospace",
+   "cities": [
+    "Ottawa, ON",
+    "Gatineau, QC"
+   ],
+   "ats": "lever",
+   "url": "https://api.lever.co/v0/postings/telesat?mode=json",
+   "careers_url": "https://www.telesat.com/careers/jobs/",
+   "clearance_risk": "low",
+   "french_likely": false
+  },
+  {
+   "name": "Thales Canada",
+   "sector": "aerospace",
+   "cities": [
+    "Ottawa, ON",
+    "Burlington, ON",
+    "Montreal, QC",
+    "Quebec City, QC"
+   ],
+   "ats": "workday",
+   "url": "https://thales.wd3.myworkdayjobs.com/wday/cxs/thales/Careers/jobs",
+   "body_facets": {
+    "locationCountry": [
+     "a30a87ed25634629aa6c3958aa2b91ea"
+    ]
+   },
+   "search_terms": [
+    "engineer",
+    "junior",
+    ""
+   ],
+   "careers_url": "https://careers.thalesgroup.com/global/en/engineering-careers-ca",
+   "clearance_risk": "medium",
+   "french_likely": false
+  },
+  {
+   "name": "Xiphos Systems",
+   "sector": "aerospace",
+   "cities": [
+    "Montreal, QC"
+   ],
+   "ats": "html_generic",
+   "url": "https://xiphos.com/recruiting",
+   "careers_url": "https://xiphos.com/recruiting",
+   "clearance_risk": "medium",
+   "french_likely": false
+  },
+  {
+   "name": "Volatus Aerospace",
+   "sector": "aerospace",
+   "cities": [
+    "Vaughan, ON"
+   ],
+   "ats": "bamboohr",
+   "url": "https://volatus.bamboohr.com/careers/list",
+   "careers_url": "https://volatusaerospace.com/careers/",
+   "clearance_risk": "medium",
+   "french_likely": false
+  },
+  {
+   "name": "AMD",
+   "sector": "semis",
+   "cities": [
+    "Markham, ON"
+   ],
+   "ats": "none",
+   "url": "",
+   "careers_url": "https://careers.amd.com/careers-home/jobs",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "program": "Campus portal campuscanada-amd.icims.com",
+   "notes": "public API returned 0 rows on 2026-09-21; covered by LinkedIn/Eluta/GitHub lists"
+  },
+  {
+   "name": "Amazon / AWS",
+   "sector": "semis",
+   "cities": [
+    "Toronto, ON",
+    "Ottawa, ON"
+   ],
+   "ats": "amazon",
+   "url": "https://www.amazon.jobs/en/search.json?base_query=engineer&loc_query=Toronto%2C+Ontario%2C+Canada&country=CAN&result_limit=100&sort=recent",
+   "careers_url": "https://www.amazon.jobs/en/",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "program": "2027 university pipeline"
+  },
+  {
+   "name": "Apple",
+   "sector": "semis",
+   "cities": [
+    "Ottawa, ON",
+    "Toronto, ON",
+    "Waterloo, ON"
+   ],
+   "ats": "none",
+   "url": "",
+   "method": "POST",
+   "body": {
+    "query": "",
+    "filters": {
+     "locations": [
+      "postLocation-OTT",
+      "postLocation-TOR",
+      "postLocation-WTL"
+     ]
+    },
+    "page": 1,
+    "locale": "en-ca",
+    "sort": "newest"
+   },
+   "careers_url": "https://jobs.apple.com/en-ca/search?location=canada-CANC",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "notes": "public API returned 0 rows on 2026-09-21; covered by LinkedIn/Eluta/GitHub lists"
+  },
+  {
+   "name": "Autodesk",
+   "sector": "semis",
+   "cities": [
+    "Toronto, ON",
+    "Montreal, QC"
+   ],
+   "ats": "workday",
+   "url": "https://autodesk.wd1.myworkdayjobs.com/wday/cxs/autodesk/Ext/jobs",
+   "search_terms": [
+    "Toronto",
+    "Montreal"
+   ],
+   "careers_url": "https://autodesk.wd1.myworkdayjobs.com/Ext",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "program": "Canada Internship Program 2027"
+  },
+  {
+   "name": "Cerebras Systems",
+   "sector": "semis",
+   "cities": [
+    "Toronto, ON"
+   ],
+   "ats": "ashby",
+   "url": "https://api.ashbyhq.com/posting-api/job-board/cerebras",
+   "careers_url": "https://www.cerebras.ai/open-positions",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "program": "New Grad titled reqs (Toronto)"
+  },
+  {
+   "name": "Ciena",
+   "sector": "semis",
+   "cities": [
+    "Ottawa, ON"
+   ],
+   "ats": "workday",
+   "url": "https://ciena.wd5.myworkdayjobs.com/wday/cxs/ciena/careers/jobs",
+   "search_terms": [
+    "Ottawa",
+    "new graduate",
+    "Canada"
+   ],
+   "careers_url": "https://www.ciena.com/careers/students-new-graduates",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "program": "Students and new graduates program",
+   "program_watch_url": "https://www.ciena.com/careers/students-new-graduates"
+  },
+  {
+   "name": "Ericsson Canada",
+   "sector": "semis",
+   "cities": [
+    "Ottawa, ON",
+    "Toronto, ON",
+    "Mississauga, ON",
+    "Montreal, QC"
+   ],
+   "ats": "eightfold_pcsx",
+   "url": "https://jobs.ericsson.com/api/pcsx/search?domain=ericsson.com&location=Ottawa%2C%20Ontario%2C%20Canada&start=0&num=50",
+   "extra_urls": [
+    "https://jobs.ericsson.com/api/pcsx/search?domain=ericsson.com&location=Montreal%2C%20Quebec%2C%20Canada&start=0&num=50",
+    "https://jobs.ericsson.com/api/pcsx/search?domain=ericsson.com&location=Toronto%2C%20Ontario%2C%20Canada&start=0&num=50"
+   ],
+   "careers_url": "https://jobs.ericsson.com/careers",
+   "clearance_risk": "low",
+   "french_likely": false
+  },
+  {
+   "name": "Google",
+   "sector": "semis",
+   "cities": [
+    "Waterloo, ON",
+    "Toronto, ON",
+    "Montreal, QC"
+   ],
+   "ats": "html_generic",
+   "url": "https://www.google.com/about/careers/applications/jobs/results/?location=Canada&target_level=INTERN_AND_APPRENTICE&target_level=EARLY&q=engineer",
+   "careers_url": "https://www.google.com/about/careers/applications/",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "program": "Software Developer, Early Career, Campus"
+  },
+  {
+   "name": "Huawei Technologies Canada",
+   "sector": "semis",
+   "cities": [
+    "Markham, ON",
+    "Ottawa, ON",
+    "Waterloo, ON",
+    "Kingston, ON",
+    "Montreal, QC"
+   ],
+   "ats": "recruitee",
+   "url": "https://huaweicanada.recruitee.com/api/offers/",
+   "careers_url": "https://huaweicanada.recruitee.com/",
+   "clearance_risk": "low",
+   "french_likely": false
+  },
+  {
+   "name": "IBM Canada",
+   "sector": "semis",
+   "cities": [
+    "Toronto, ON",
+    "Markham, ON",
+    "Ottawa, ON",
+    "Montreal, QC",
+    "Bromont, QC"
+   ],
+   "ats": "json_generic",
+   "url": "https://www-api.ibm.com/search/api/v2",
+   "method": "POST",
+   "headers": {
+    "Origin": "https://www.ibm.com"
+   },
+   "body": {
+    "appId": "careers",
+    "scopes": [
+     "careers2"
+    ],
+    "query": {
+     "bool": {
+      "must": [
+       {
+        "term": {
+         "field_keyword_18": "Entry Level"
+        }
+       },
+       {
+        "terms": {
+         "field_keyword_19": [
+          "Toronto, CA",
+          "Markham, CA",
+          "Ottawa, CA",
+          "Montreal, CA",
+          "BROMONT, CA"
+         ]
+        }
+       }
+      ]
+     }
+    },
+    "post_filter": {
+     "bool": {
+      "must": []
+     }
+    },
+    "size": 50,
+    "lang": "zz",
+    "_source": [
+     "title",
+     "url",
+     "field_keyword_08",
+     "field_keyword_18",
+     "field_keyword_19"
+    ]
+   },
+   "careers_url": "https://www.ibm.com/careers/search",
+   "clearance_risk": "medium",
+   "french_likely": false,
+   "program": "2027 Associate cohorts"
+  },
+  {
+   "name": "Kinaxis",
+   "sector": "semis",
+   "cities": [
+    "Ottawa, ON",
+    "Toronto, ON"
+   ],
+   "ats": "none",
+   "url": "https://careers-kinaxis.icims.com/jobs/search?ss=1",
+   "careers_url": "https://www.kinaxis.com/en/careers",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "notes": "board blocks scripted access (405/403 on 2026-09-21); covered by aggregators"
+  },
+  {
+   "name": "Meta",
+   "sector": "semis",
+   "cities": [
+    "Toronto, ON",
+    "Montreal, QC"
+   ],
+   "ats": "none",
+   "url": "",
+   "careers_url": "https://www.metacareers.com/jobs",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "program": "University Grad track (Research Engineer, AI, Montreal)",
+   "notes": "sitemap has no titles; covered by LinkedIn/GitHub lists"
+  },
+  {
+   "name": "Microsoft Canada",
+   "sector": "semis",
+   "cities": [
+    "Toronto, ON",
+    "Ottawa, ON",
+    "Montreal, QC"
+   ],
+   "ats": "eightfold_pcsx",
+   "url": "https://apply.careers.microsoft.com/api/pcsx/search?domain=microsoft.com&start=0&num=50&query=&location=Toronto,%20Ontario,%20Canada&sort_by=timestamp",
+   "extra_urls": [
+    "https://apply.careers.microsoft.com/api/pcsx/search?domain=microsoft.com&start=0&num=50&query=&location=Montreal,%20Quebec,%20Canada&sort_by=timestamp"
+   ],
+   "careers_url": "https://apply.careers.microsoft.com/careers",
+   "clearance_risk": "low",
+   "french_likely": false
+  },
+  {
+   "name": "NVIDIA",
+   "sector": "semis",
+   "cities": [
+    "Toronto, ON"
+   ],
+   "ats": "workday",
+   "url": "https://nvidia.wd5.myworkdayjobs.com/wday/cxs/nvidia/NVIDIAExternalCareerSite/jobs",
+   "search_terms": [
+    "Toronto",
+    "Canada new college grad"
+   ],
+   "careers_url": "https://jobs.nvidia.com/careers",
+   "clearance_risk": "low",
+   "french_likely": false
+  },
+  {
+   "name": "Nokia",
+   "sector": "semis",
+   "cities": [
+    "Ottawa, ON"
+   ],
+   "ats": "oracle_hcm",
+   "url": "https://fa-evmr-saasfaprod1.fa.ocs.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions?onlyData=true&expand=requisitionList.workLocation&finder=findReqs;siteNumber=CX_1,limit=90,sortBy=POSTING_DATES_DESC,selectedLocationsFacet=300000000471544",
+   "careers_url": "https://www.nokia.com/careers/our-locations/canada/students-and-graduates/",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "program": "Students and graduates page",
+   "program_watch_url": "https://www.nokia.com/careers/our-locations/canada/students-and-graduates/"
+  },
+  {
+   "name": "Qualcomm",
+   "sector": "semis",
+   "cities": [
+    "Markham, ON",
+    "Toronto, ON",
+    "Ottawa, ON"
+   ],
+   "ats": "html_generic",
+   "url": "https://careers.qualcomm.com/careers?location=Markham%2C%20Ontario%2C%20Canada",
+   "careers_url": "https://careers.qualcomm.com/careers",
+   "clearance_risk": "medium",
+   "french_likely": false,
+   "program": "ML Engineer (New Grad) Markham seen; FY27 intern program"
+  },
+  {
+   "name": "RANOVUS",
+   "sector": "semis",
+   "cities": [
+    "Ottawa, ON"
+   ],
+   "ats": "bamboohr",
+   "url": "https://ranovus.bamboohr.com/careers/list",
+   "careers_url": "https://ranovus.com/careers/",
+   "clearance_risk": "low",
+   "french_likely": false
+  },
+  {
+   "name": "Shopify",
+   "sector": "semis",
+   "cities": [
+    "Ottawa, ON",
+    "Toronto, ON",
+    "Montreal, QC"
+   ],
+   "ats": "html_generic",
+   "url": "https://www.shopify.com/careers/search",
+   "careers_url": "https://www.shopify.com/careers",
+   "clearance_risk": "low",
+   "french_likely": false
+  },
+  {
+   "name": "Solace",
+   "sector": "semis",
+   "cities": [
+    "Ottawa, ON"
+   ],
+   "ats": "bamboohr",
+   "url": "https://solace.bamboohr.com/careers/list",
+   "careers_url": "https://solace.com/careers/",
+   "clearance_risk": "low",
+   "french_likely": false
+  },
+  {
+   "name": "Synopsys (incl. ex-Ansys)",
+   "sector": "semis",
+   "cities": [
+    "Ottawa, ON",
+    "Mississauga, ON",
+    "Waterloo, ON"
+   ],
+   "ats": "radancy_json",
+   "url": "https://careers.synopsys.com/search-jobs/results?ActiveFacetID=0&CurrentPage=1&RecordsPerPage=100&Distance=50&RadiusUnitType=0&Keywords=&Location=Canada&ShowRadius=False&IsPagination=False&CustomFacetName=&FacetTerm=&FacetType=0&SearchResultsModuleName=Search+Results&SearchFiltersModuleName=Search+Filters&SortCriteria=1&SortDirection=1&SearchType=5",
+   "careers_url": "https://careers.synopsys.com/",
+   "clearance_risk": "low",
+   "french_likely": false
+  },
+  {
+   "name": "Tenstorrent",
+   "sector": "semis",
+   "cities": [
+    "Toronto, ON"
+   ],
+   "ats": "greenhouse",
+   "url": "https://boards-api.greenhouse.io/v1/boards/tenstorrent/jobs?content=true",
+   "careers_url": "https://tenstorrent.com/careers",
+   "clearance_risk": "medium",
+   "french_likely": false
+  },
+  {
+   "name": "Ubisoft La Forge / Ubisoft Canada",
+   "sector": "semis",
+   "cities": [
+    "Montreal, QC",
+    "Quebec City, QC",
+    "Sherbrooke, QC",
+    "Toronto, ON"
+   ],
+   "ats": "smartrecruiters",
+   "url": "https://api.smartrecruiters.com/v1/companies/Ubisoft2/postings?country=ca&limit=100",
+   "careers_url": "https://www.ubisoft.com/en-us/company/careers/interns-graduates",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "program": "Graduate Programs hub"
+  },
+  {
+   "name": "Xanadu",
+   "sector": "semis",
+   "cities": [
+    "Toronto, ON"
+   ],
+   "ats": "json_generic",
+   "url": "https://xanadu.careers.hibob.com/api/job-ad",
+   "headers": {
+    "companyidentifier": "xanadu"
+   },
+   "careers_url": "https://xanadu.careers.hibob.com/jobs",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "program": "Residency Program",
+   "program_watch_url": "https://www.xanadu.ai/residency/"
+  },
+  {
+   "name": "Cadence Design Systems",
+   "sector": "semis",
+   "cities": [
+    "Toronto, ON",
+    "Montreal, QC",
+    "Burlington, ON"
+   ],
+   "ats": "workday",
+   "url": "https://cadence.wd1.myworkdayjobs.com/wday/cxs/cadence/External_Careers/jobs",
+   "search_terms": [
+    "Canada",
+    "Toronto",
+    "Montreal"
+   ],
+   "careers_url": "https://www.cadence.com/en_US/home/company/life-at-cadence/careers.html",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "program": "New Grads and Interns section"
+  },
+  {
+   "name": "Cisco Systems Canada",
+   "sector": "semis",
+   "cities": [
+    "Kanata, ON",
+    "Ottawa, ON",
+    "Toronto, ON",
+    "Montreal, QC"
+   ],
+   "ats": "workday",
+   "url": "https://cisco.wd5.myworkdayjobs.com/wday/cxs/cisco/Cisco_Careers/jobs",
+   "search_terms": [
+    "Ottawa",
+    "Kanata",
+    "Toronto Canada",
+    "Montreal"
+   ],
+   "careers_url": "https://careers.cisco.com/global/en",
+   "clearance_risk": "low",
+   "french_likely": false
+  },
+  {
+   "name": "Siemens Canada",
+   "sector": "industrial",
+   "cities": [
+    "Concord, ON",
+    "Oakville, ON",
+    "Ottawa, ON",
+    "Montreal, QC"
+   ],
+   "ats": "html_generic",
+   "url": "https://jobs.siemens.com/en_US/externaljobs/SearchJobs/?search=Canada",
+   "careers_url": "https://jobs.siemens.com/",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "program": "Experience@Siemens 12-month new-graduate program",
+   "program_watch_url": "https://jobs.siemens.com/en_US/externaljobs/SearchJobs/?search=Experience%40Siemens"
+  },
+  {
+   "name": "Samsung AI Center Toronto / Samsung Electronics Canada",
+   "sector": "semis",
+   "cities": [
+    "Toronto, ON",
+    "Mississauga, ON"
+   ],
+   "ats": "workday",
+   "url": "https://sec.wd3.myworkdayjobs.com/wday/cxs/sec/Samsung_Careers/jobs",
+   "search_terms": [
+    "Toronto",
+    "Mississauga New Grad"
+   ],
+   "careers_url": "https://research.samsung.com/aicenter_toronto",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "program": "Samsung Electronics Canada New Grad Program (12-month)"
+  },
+  {
+   "name": "Pleora Technologies",
+   "sector": "semis",
+   "cities": [
+    "Kanata, ON"
+   ],
+   "ats": "bamboohr",
+   "url": "https://pleora.bamboohr.com/careers/list",
+   "careers_url": "https://www.pleora.com/about-us/working-at-pleora/",
+   "clearance_risk": "low",
+   "french_likely": false
+  },
+  {
+   "name": "Maplesoft",
+   "sector": "semis",
+   "cities": [
+    "Waterloo, ON"
+   ],
+   "ats": "json_generic",
+   "url": "https://api.rippling.com/platform/api/ats/v1/board/maplesoft/jobs",
+   "careers_url": "https://www.maplesoft.com/company/careers/",
+   "clearance_risk": "low",
+   "french_likely": false
+  },
+  {
+   "name": "Ecopia AI",
+   "sector": "ml",
+   "cities": [
+    "Toronto, ON"
+   ],
+   "ats": "html_generic",
+   "url": "https://ecopiatech.applytojobs.ca/v1/embedded",
+   "careers_url": "https://www.ecopiatech.com/careers",
+   "clearance_risk": "low",
+   "french_likely": false
+  },
+  {
+   "name": "Anyon Systems",
+   "sector": "semis",
+   "cities": [
+    "Montreal, QC",
+    "Waterloo, ON"
+   ],
+   "ats": "bamboohr",
+   "url": "https://anyon.bamboohr.com/careers/list",
+   "careers_url": "https://anyonsys.com/en/careers/jobs",
+   "clearance_risk": "medium",
+   "french_likely": true
+  },
+  {
+   "name": "Cohere",
+   "sector": "ml",
+   "cities": [
+    "Toronto, ON",
+    "Montreal, QC"
+   ],
+   "ats": "ashby",
+   "url": "https://api.ashbyhq.com/posting-api/job-board/cohere",
+   "careers_url": "https://cohere.com/careers",
+   "clearance_risk": "low",
+   "french_likely": false
+  },
+  {
+   "name": "Coveo",
+   "sector": "ml",
+   "cities": [
+    "Montreal, QC",
+    "Quebec City, QC"
+   ],
+   "ats": "greenhouse",
+   "url": "https://boards-api.greenhouse.io/v1/boards/coveoen/jobs?content=true",
+   "careers_url": "https://www.coveo.com/en/company/careers/open-positions",
+   "clearance_risk": "low",
+   "french_likely": false
+  },
+  {
+   "name": "Genetec",
+   "sector": "ml",
+   "cities": [
+    "Montreal, QC",
+    "Quebec City, QC",
+    "Sherbrooke, QC",
+    "Toronto, ON"
+   ],
+   "ats": "workable_v3",
+   "url": "https://apply.workable.com/api/v3/accounts/genetec-inc/jobs",
+   "careers_url": "https://www.genetec.com/careers",
+   "clearance_risk": "low",
+   "french_likely": false
+  },
+  {
+   "name": "Intact Lab",
+   "sector": "ml",
+   "cities": [
+    "Montreal, QC",
+    "Toronto, ON",
+    "Ottawa, ON"
+   ],
+   "ats": "workday",
+   "url": "https://intactfc.wd3.myworkdayjobs.com/wday/cxs/intactfc/intactfc/jobs",
+   "search_terms": [
+    "data scientist",
+    "AI developer",
+    "engineer"
+   ],
+   "careers_url": "https://careers.intactfc.com/jobs",
+   "clearance_risk": "medium",
+   "french_likely": false
+  },
+  {
+   "name": "Layer 6 AI (TD)",
+   "sector": "ml",
+   "cities": [
+    "Toronto, ON"
+   ],
+   "ats": "workday",
+   "url": "https://td.wd3.myworkdayjobs.com/wday/cxs/td/TD_Bank_Careers/jobs",
+   "search_terms": [
+    "AI2",
+    "Layer 6",
+    "machine learning graduate"
+   ],
+   "careers_url": "https://layer6.ai/careers/",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "program": "AI2 Associate (Graduate) 18-month rotational program"
+  },
+  {
+   "name": "Mila",
+   "sector": "research",
+   "cities": [
+    "Montreal, QC"
+   ],
+   "ats": "json_generic",
+   "url": "https://apply.workable.com/api/v1/widget/accounts/mila-2?details=true",
+   "careers_url": "https://apply.workable.com/mila-2/?lng=en",
+   "clearance_risk": "low",
+   "french_likely": false
+  },
+  {
+   "name": "RBC Borealis",
+   "sector": "ml",
+   "cities": [
+    "Toronto, ON",
+    "Waterloo, ON",
+    "Montreal, QC"
+   ],
+   "ats": "workday",
+   "url": "https://rbc.wd3.myworkdayjobs.com/wday/cxs/rbc/RBCGLOBAL1/jobs",
+   "search_terms": [
+    "Borealis",
+    "machine learning Toronto"
+   ],
+   "careers_url": "https://rbcborealis.com/careers/",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "program": "Student Opportunities RBC Borealis (per term)"
+  },
+  {
+   "name": "ServiceNow AI Research",
+   "sector": "ml",
+   "cities": [
+    "Montreal, QC",
+    "Toronto, ON"
+   ],
+   "ats": "smartrecruiters",
+   "url": "https://api.smartrecruiters.com/v1/companies/ServiceNow/postings?limit=100&country=ca",
+   "careers_url": "https://careers.servicenow.com/jobs/?search=engineer&country=Canada",
+   "clearance_risk": "medium",
+   "french_likely": false
+  },
+  {
+   "name": "Thomson Reuters Labs",
+   "sector": "ml",
+   "cities": [
+    "Toronto, ON"
+   ],
+   "ats": "workday",
+   "url": "https://thomsonreuters.wd5.myworkdayjobs.com/wday/cxs/thomsonreuters/External_Career_Site/jobs",
+   "search_terms": [
+    "Labs Toronto",
+    "applied research"
+   ],
+   "careers_url": "https://thomsonreuters.wd5.myworkdayjobs.com/en-US/External_Career_Site?q=Labs",
+   "clearance_risk": "low",
+   "french_likely": false
+  },
+  {
+   "name": "Vector Institute",
+   "sector": "research",
+   "cities": [
+    "Toronto, ON"
+   ],
+   "ats": "adp_workforcenow",
+   "url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions?cid=4ed2be93-8bc5-40e2-915f-931884eac404&ccId=9200420850870_2&locale=en_CA",
+   "careers_url": "https://vectorinstitute.ai/about/careers/open-positions/",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "headers": {
+    "Accept": "application/json"
+   }
+  },
+  {
+   "name": "Wealthsimple",
+   "sector": "ml",
+   "cities": [
+    "Toronto, ON"
+   ],
+   "ats": "ashby",
+   "url": "https://api.ashbyhq.com/posting-api/job-board/wealthsimple",
+   "careers_url": "https://www.wealthsimple.com/en-ca/careers",
+   "clearance_risk": "low",
+   "french_likely": false
+  },
+  {
+   "name": "ABB Canada",
+   "sector": "industrial",
+   "cities": [
+    "Saint-Laurent, QC",
+    "Quebec City, QC",
+    "Montreal, QC"
+   ],
+   "ats": "workday",
+   "url": "https://abb.wd3.myworkdayjobs.com/wday/cxs/abb/External_Career_Page/jobs",
+   "search_terms": [
+    "engineer Canada",
+    "Quebec",
+    "Ontario"
+   ],
+   "careers_url": "https://careers.abb/global/en/search-results?keywords=Canada",
+   "clearance_risk": "low",
+   "french_likely": true
+  },
+  {
+   "name": "AtkinsRealis (Candu Energy)",
+   "sector": "industrial",
+   "cities": [
+    "Mississauga, ON",
+    "Toronto, ON",
+    "Pickering, ON",
+    "Montreal, QC"
+   ],
+   "ats": "workday",
+   "url": "https://slihrms.wd3.myworkdayjobs.com/wday/cxs/slihrms/Careers/jobs",
+   "search_terms": [
+    "New Graduate",
+    "junior",
+    "Ontario"
+   ],
+   "careers_url": "https://careers.atkinsrealis.com/en/jobs",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "program": "Odyssey Program (New Graduate reqs)"
+  },
+  {
+   "name": "BWXT Canada",
+   "sector": "industrial",
+   "cities": [
+    "Cambridge, ON",
+    "Peterborough, ON",
+    "Kitchener, ON",
+    "Toronto, ON"
+   ],
+   "ats": "successfactors_html",
+   "url": "https://careers.bwxt.com/search/?q=&locationsearch=Ontario%2C+Canada",
+   "careers_url": "https://careers.bwxt.com/",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "program": "Recent Grad and Student Jobs category"
+  },
+  {
+   "name": "Bruce Power",
+   "sector": "industrial",
+   "cities": [
+    "Tiverton, ON"
+   ],
+   "ats": "workday",
+   "url": "https://brucepower.wd3.myworkdayjobs.com/wday/cxs/brucepower/BrucePower/jobs",
+   "search_terms": [
+    "engineer",
+    "student",
+    "new grad"
+   ],
+   "careers_url": "https://www.brucepower.com/careers/student-opportunities/",
+   "clearance_risk": "medium",
+   "french_likely": false
+  },
+  {
+   "name": "Canadian Nuclear Laboratories",
+   "sector": "industrial",
+   "cities": [
+    "Chalk River, ON",
+    "Port Hope, ON"
+   ],
+   "ats": "html_generic",
+   "url": "https://tre.tbe.taleo.net/tre01/ats/careers/v2/searchResults?org=CNLLTD&cws=37",
+   "careers_url": "https://www.cnl.ca/about-cnl/work-with-us/",
+   "clearance_risk": "medium",
+   "french_likely": false,
+   "program": "New Graduates category; international students welcome"
+  },
+  {
+   "name": "GE Vernova",
+   "sector": "industrial",
+   "cities": [
+    "Markham, ON"
+   ],
+   "ats": "workday",
+   "url": "https://gevernova.wd5.myworkdayjobs.com/wday/cxs/gevernova/Vernova_ExternalSite/jobs",
+   "search_terms": [
+    "Markham",
+    "Canada nuclear"
+   ],
+   "careers_url": "https://careers.gevernova.com/",
+   "clearance_risk": "medium",
+   "french_likely": false
+  },
+  {
+   "name": "Hatch",
+   "sector": "industrial",
+   "cities": [
+    "Mississauga, ON",
+    "Niagara Falls, ON",
+    "Sudbury, ON"
+   ],
+   "ats": "successfactors_rss",
+   "url": "https://jobs.hatch.com/services/rss/job/?locale=en_GB",
+   "careers_url": "https://jobs.hatch.com/go/Student-&-New-Graduate-Jobs/2565100/",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "program": "Student & New Graduate Jobs category (Engineering Trainee reqs)",
+   "program_watch_url": "https://jobs.hatch.com/go/Student-&-New-Graduate-Jobs/2565100/"
+  },
+  {
+   "name": "Hitachi Rail",
+   "sector": "industrial",
+   "cities": [
+    "Toronto, ON",
+    "Mississauga, ON",
+    "Montreal, QC"
+   ],
+   "ats": "workday",
+   "url": "https://hitachi.wd1.myworkdayjobs.com/wday/cxs/hitachi/hitachi/jobs",
+   "search_terms": [
+    "Toronto",
+    "Montreal rail"
+   ],
+   "careers_url": "https://www.hitachirail.com/careers/",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "program": "Early Careers Graduates/Entry Level stream"
+  },
+  {
+   "name": "Hydro One",
+   "sector": "industrial",
+   "cities": [
+    "Toronto, ON",
+    "Markham, ON",
+    "Mississauga, ON",
+    "Pickering, ON"
+   ],
+   "ats": "successfactors_html",
+   "url": "https://jobs.hydroone.com/search/?q=&sortColumn=referencedate&sortDirection=desc",
+   "careers_url": "https://jobs.hydroone.com/",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "program": "New Grad Program - Engineering (June cohort, posts in autumn)",
+   "program_watch_url": "https://jobs.hydroone.com/go/Student-Jobs/826900/"
+  },
+  {
+   "name": "Hydro-Quebec (IREQ)",
+   "sector": "industrial",
+   "cities": [
+    "Montreal, QC",
+    "Varennes, QC"
+   ],
+   "ats": "html_generic",
+   "url": "https://emploi.hydroquebec.com/viewalljobs/",
+   "careers_url": "https://emploi.hydroquebec.com/",
+   "clearance_risk": "low",
+   "french_likely": true
+  },
+  {
+   "name": "Kinectrics",
+   "sector": "industrial",
+   "cities": [
+    "Toronto, ON",
+    "Pickering, ON",
+    "Tiverton, ON"
+   ],
+   "ats": "successfactors_rss",
+   "url": "https://careers.kinectrics.com/services/rss/job/?locale=en_US&keywords=locationSearch%3A%28Ontario%29",
+   "careers_url": "https://careers.kinectrics.com/",
+   "clearance_risk": "medium",
+   "french_likely": false,
+   "program": "Graduate Trainee Program (24-month rotational)"
+  },
+  {
+   "name": "Metrolinx",
+   "sector": "industrial",
+   "cities": [
+    "Toronto, ON",
+    "Mississauga, ON",
+    "Oakville, ON"
+   ],
+   "ats": "oracle_hcm",
+   "url": "https://ehtc.fa.ca2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions?onlyData=true&expand=requisitionList.workLocation&finder=findReqs;siteNumber=CX_1,limit=100,sortBy=POSTING_DATES_DESC",
+   "careers_url": "https://www.metrolinx.com/en/about-us/careers",
+   "clearance_risk": "low",
+   "french_likely": false
+  },
+  {
+   "name": "Ontario Power Generation",
+   "sector": "industrial",
+   "cities": [
+    "Pickering, ON",
+    "Bowmanville, ON",
+    "Niagara, ON",
+    "Oshawa, ON",
+    "Toronto, ON"
+   ],
+   "ats": "successfactors_rss",
+   "url": "https://jobs.opg.com/services/rss/job/?locale=en_GB",
+   "careers_url": "https://jobs.opg.com/go/Our-Students-&-New-Grads/2626017/",
+   "clearance_risk": "medium",
+   "french_likely": false,
+   "program": "Students & New Grads (postings Sept/Oct for May start)",
+   "program_watch_url": "https://jobs.opg.com/go/Our-Students-&-New-Grads/2626017/"
+  },
+  {
+   "name": "Schneider Electric Canada",
+   "sector": "industrial",
+   "cities": [
+    "Milton, ON",
+    "Montreal, QC",
+    "Brossard, QC"
+   ],
+   "ats": "icims_json",
+   "url": "https://careers.se.com/api/jobs?keywords=engineer&location=Canada&limit=50",
+   "careers_url": "https://careers.se.com/jobs?keywords=engineer&location=Canada",
+   "clearance_risk": "low",
+   "french_likely": false
+  },
+  {
+   "name": "Stantec",
+   "sector": "industrial",
+   "cities": [
+    "Toronto, ON",
+    "Ottawa, ON",
+    "Markham, ON",
+    "Mississauga, ON",
+    "Waterloo, ON",
+    "Longueuil, QC"
+   ],
+   "ats": "sitemap_slug",
+   "url": "https://stantec.jobs/sitemaps/jobs_1.xml",
+   "careers_url": "https://stantec.jobs/",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "program": "Graduate / EIT campaign channels"
+  },
+  {
+   "name": "WSP Canada",
+   "sector": "industrial",
+   "cities": [
+    "Toronto, ON",
+    "Mississauga, ON",
+    "Ottawa, ON",
+    "Burlington, ON",
+    "Montreal, QC"
+   ],
+   "ats": "oracle_hcm",
+   "url": "https://emit.fa.ca3.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions?onlyData=true&expand=requisitionList.secondaryLocations&finder=findReqs;siteNumber=CX_1005,limit=100,offset=0,sortBy=POSTING_DATES_DESC",
+   "careers_url": "https://emit.fa.ca3.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1005/requisitions",
+   "clearance_risk": "low",
+   "french_likely": false
+  },
+  {
+   "name": "Toronto Transit Commission",
+   "sector": "industrial",
+   "cities": [
+    "Toronto, ON"
+   ],
+   "ats": "html_generic",
+   "url": "https://www.ttc.ca/Jobs/Early-Talent/Early-Talent-Intern-Program/Intern-Opportunities",
+   "careers_url": "https://www.ttc.ca/Jobs",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "program": "TTC New Grad Programs (Engineering stream; posts in September for a spring start)",
+   "program_watch_url": "https://www.ttc.ca/Jobs/Early-Talent/New-Grad-Programs"
+  }
+ ],
+ "aggregators": {
+  "linkedin": {
+   "enabled": true,
+   "pace_seconds": 3.5,
+   "pages": [
+    0,
+    10
+   ],
+   "geo_ids": {
+    "Ontario": "105149290",
+    "Quebec": "102237789"
+   },
+   "keywords": [
+    "new grad engineer",
+    "robotics engineer",
+    "autonomy engineer",
+    "perception engineer",
+    "machine learning engineer new grad",
+    "controls engineer",
+    "embedded software engineer new grad",
+    "engineer in training",
+    "graduate engineering program 2027",
+    "research engineer",
+    "mechatronics engineer",
+    "systems engineer new graduate"
+   ]
+  },
+  "eluta": {
+   "enabled": true,
+   "queries": [
+    "robotics",
+    "\"controls engineer\"",
+    "perception OR autonomy",
+    "\"machine learning engineer\"",
+    "embedded OR firmware",
+    "\"research engineer\"",
+    "\"new grad\" OR \"new graduate\" engineer",
+    "\"engineer in training\" OR EIT OR \"graduate engineer\""
+   ],
+   "places": [
+    "Ontario",
+    "Toronto, ON",
+    "Ottawa, ON",
+    "Montreal, QC"
+   ]
+  },
+  "jobbank": {
+   "enabled": true,
+   "pace_seconds": 5,
+   "queries": [
+    "robotics",
+    "controls engineer",
+    "machine learning",
+    "embedded",
+    "engineer-in-training",
+    "mechatronics"
+   ],
+   "provinces": [
+    "ON",
+    "QC"
+   ]
+  },
+  "vector": {
+   "enabled": true,
+   "terms": [
+    "robotics",
+    "machine learning engineer",
+    "computer vision",
+    "new grad",
+    "research engineer",
+    "embedded"
+   ]
+  },
+  "getro": {
+   "enabled": true,
+   "collections": {
+    "Communitech Work In Tech": 628
+   },
+   "terms": [
+    "robotics",
+    "perception",
+    "autonomy",
+    "controls",
+    "embedded",
+    "computer vision",
+    "new grad"
+   ]
+  },
+  "hn_algolia": {
+   "enabled": true,
+   "queries": [
+    "Toronto robotics",
+    "Montreal robotics",
+    "Toronto machine learning",
+    "Ottawa embedded",
+    "Waterloo robotics"
+   ]
+  },
+  "ros_discourse": {
+   "enabled": true,
+   "url": "https://discourse.openrobotics.org/c/jobs/15.json"
+  },
+  "github": [
+   {
+    "name": "vanshb03 New-Grad-2027 Canada",
+    "url": "https://raw.githubusercontent.com/vanshb03/New-Grad-2027/dev/Canada.md",
+    "format": "md_table"
+   },
+   {
+    "name": "vanshb03 listings.json",
+    "url": "https://raw.githubusercontent.com/vanshb03/New-Grad-2027/dev/.github/scripts/listings.json",
+    "format": "simplify_json"
+   },
+   {
+    "name": "speedyapply SWE NEW_GRAD_INTL",
+    "url": "https://raw.githubusercontent.com/speedyapply/2027-SWE-College-Jobs/main/NEW_GRAD_INTL.md",
+    "format": "md_table"
+   },
+   {
+    "name": "speedyapply AI NEW_GRAD_INTL",
+    "url": "https://raw.githubusercontent.com/speedyapply/2027-AI-College-Jobs/main/NEW_GRAD_INTL.md",
+    "format": "md_table"
+   },
+   {
+    "name": "grind-fyi Software-NewGrad-Canada",
+    "url": "https://raw.githubusercontent.com/grind-fyi/Software-NewGrad-Canada/master/README.md",
+    "format": "md_table"
+   },
+   {
+    "name": "zapplyjobs Canada-Jobs-2027",
+    "url": "https://raw.githubusercontent.com/zapplyjobs/Canada-Jobs-2027/main/README.md",
+    "format": "md_table"
+   },
+   {
+    "name": "JeelTikiwala New-Grad-2026",
+    "url": "https://raw.githubusercontent.com/JeelTikiwala/New-Grad-2026/main/README.md",
+    "format": "md_table"
+   },
+   {
+    "name": "SimplifyJobs New-Grad-Positions listings.json",
+    "url": "https://raw.githubusercontent.com/SimplifyJobs/New-Grad-Positions/dev/.github/scripts/listings.json",
+    "format": "simplify_json",
+    "large": true
+   }
+  ]
+ },
+ "watch_pages": [
+  {
+   "name": "TTC New Grad Programs",
+   "url": "https://www.ttc.ca/Jobs/Early-Talent/New-Grad-Programs"
+  },
+  {
+   "name": "TTC Early Talent openings",
+   "url": "https://www.ttc.ca/Jobs/Early-Talent/Early-Talent-Intern-Program/Intern-Opportunities"
+  },
+  {
+   "name": "Hydro One Student & New Grad",
+   "url": "https://jobs.hydroone.com/go/Student-Jobs/826900/"
+  },
+  {
+   "name": "OPG Students & New Grads",
+   "url": "https://jobs.opg.com/go/Our-Students-&-New-Grads/2626017/"
+  },
+  {
+   "name": "Bombardier ECAP",
+   "url": "https://bombardier.com/en/careers/new-graduate-programs/engineering-career-accelerated-program-canada"
+  },
+  {
+   "name": "Hydro-Quebec stages et programmes",
+   "url": "https://emploi.hydroquebec.com/content/Stages-et-programmes/"
+  },
+  {
+   "name": "Ontario Internship Program",
+   "url": "https://www.ontario.ca/page/apply-ontario-internship-program"
+  },
+  {
+   "name": "Ciena students and new graduates",
+   "url": "https://www.ciena.com/careers/students-new-graduates"
+  },
+  {
+   "name": "Hatch Student & New Graduate Jobs",
+   "url": "https://jobs.hatch.com/go/Student-&-New-Graduate-Jobs/2565100/"
+  },
+  {
+   "name": "ATS Entry & New Graduates",
+   "url": "https://jobs.atsautomation.com/go/Entry-&-New-Graduates/"
+  },
+  {
+   "name": "Linamar students and graduates",
+   "url": "https://www.linamar.com/students-graduates/"
+  },
+  {
+   "name": "Siemens Experience@Siemens",
+   "url": "https://jobs.siemens.com/en_US/externaljobs/SearchJobs/?search=Experience%40Siemens"
+  },
+  {
+   "name": "Ocado early careers",
+   "url": "https://careers.ocadogroup.com/teams/early-careers"
+  },
+  {
+   "name": "CNL student careers",
+   "url": "https://www.cnl.ca/about-cnl/student-careers/"
+  }
+ ],
+ "no_openings_patterns": [
+  "no current openings",
+  "There are currently no open positions",
+  "no open positions",
+  "now closed",
+  "is now closed",
+  "no positions available",
+  "aucun poste",
+  "aucune offre"
+ ]
+}
