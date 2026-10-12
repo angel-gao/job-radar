@@ -394,7 +394,7 @@ def main():
     json.dump(out, open(dst, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     summ = dst.rsplit(".", 1)[0] + "_summary.txt"
     with open(summ, "w", encoding="utf-8") as f:
-        f.write("adjusted | prelim | suggestion | title | company | location | detail | url\n")
+        f.write("adjusted | prelim | suggestion | type | title | company | location | detail | url\n")
         for x in out:
             v = x["verify"]
             if x["suggestion"] == "drop":
@@ -404,7 +404,8 @@ def main():
             else:
                 detail = "entry: %s | salary: %s | FR: %s | %s" % ((v.get("entry_wording") or "-")[:90], (v.get("salary") or "-")[:90],
                                                                  v.get("french_required") or "-", ", ".join(x["adjust_notes"]))
-            f.write("%s | %s | %s | %s | %s | %s | %s | %s\n" % (x["adjusted"], x.get("prelim"), x["suggestion"], x.get("title", "")[:90],
+            f.write("%s | %s | %s | %s | %s | %s | %s | %s | %s\n" % (x["adjusted"], x.get("prelim"), x["suggestion"],
+                                                               x.get("role_type") or "-", x.get("title", "")[:90],
                                                                (x.get("company") or "")[:40], (x.get("location") or "")[:40],
                                                                detail.replace("\n", " "), v.get("url_opened") or x.get("url")))
     from collections import Counter

@@ -642,12 +642,34 @@ def family_of(it):
     return None, "no_family"
 
 
+# Role type for the digest's Type column (2026-10-12), so engineering roles rank above pure coding roles:
+# software = mostly writing code (developer, software, ML/AI/data roles); mixed = engineering with
+# substantial code on real hardware (robotics or embedded software, firmware, perception, software verification);
+# engineering = hardware, controls, systems, test, I&C, electrical/mechanical, graduate programs, research.
+SW_TYPE_RE = re.compile(r"software|logiciel|developer|d[ée]veloppeu|programm|full[- ]?stack|back[- ]?end|front[- ]?end|"
+                        r"\bweb\b|devops|\bcloud\b|data (engineer|scien|analyst)|machine learning|\bML\b|\bAI\b|\bIA\b|"
+                        r"\bLLM|\bagent|applied scientist|\bQA\b|test automation|compiler|kernel|\bSDET\b|site reliability", re.I)
+MIXED_SW_RE = re.compile(r"robot|autonom|perception|embedded|firmware|controls\b|control systems?|motion control|"
+                         r"verification|simulation|\bGNC\b|mechatronic|physical ai|\bvol\b|satellite|spatial|embarqu|"
+                         r"temps r[ée]el|test (station|bench|rig)|banc d.essai|"
+                         r"hardware|sensor|lidar|camera|avionic|flight|vehicle|real[- ]time|\bRTOS\b|FPGA", re.I)
+MIXED_ENG_RE = re.compile(r"firmware|perception|autonom|computer vision|machine vision|simulation", re.I)
+
+
+def role_type(it):
+    t = it.get("title", "") or ""
+    if SW_TYPE_RE.search(t):
+        return "mixed" if MIXED_SW_RE.search(t) else "software"
+    return "mixed" if MIXED_ENG_RE.search(t) else "engineering"
+
+
 def prelim_score(it, source_names=()):
     fam, why = family_of(it)
     t = it.get("title", "") or ""
     snip = it.get("snippet", "") or ""
     text = t + " " + snip
-    res = {"family": fam, "family_basis": why}
+    rtype = role_type(it)
+    res = {"family": fam, "family_basis": why, "role_type": rtype}
     if fam is None:
         res.update(prelim=0, parts={})
         return res
@@ -675,9 +697,10 @@ def prelim_score(it, source_names=()):
     french = -10 if FR_REQ_RE.search(text) else 0
     if re.search(r"\b2026\b", t) and re.search(r"grad|campus|dipl|program", t, re.I) and "2027" not in t:
         french -= 10   # 2026 cohort
-    total = max(0, min(100, level + domain + timing + employer + extras + french))
+    software = -10 if rtype == "software" else 0
+    total = max(0, min(100, level + domain + timing + employer + extras + french + software))
     res.update(prelim=total, parts={"level": level, "domain": domain, "timing": timing, "employer": employer,
-                                    "extras": extras, "french": french})
+                                    "extras": extras, "french": french, "software": software})
     return res
 
 
@@ -3269,7 +3292,8 @@ def main():
         p = sc["prelim"]
         bands["0_not_a_fit" if p == 0 else "1-39" if p < 40 else "40-49" if p < 50 else "50-69" if p < 70 else "70+"] += 1
         if dump is not None:
-            dump.append(dict(it, verdict="ok", prelim=p, family=sc["family"], family_basis=sc["family_basis"], fuzzy=fz))
+            dump.append(dict(it, verdict="ok", prelim=p, family=sc["family"], family_basis=sc["family_basis"],
+                             role_type=sc["role_type"], fuzzy=fz))
         if uk in seen or (fk and fk in seen):
             counts["seen"] += 1
             continue
@@ -3285,14 +3309,14 @@ def main():
             prim = keep[ident]
             _merge_into(prim, it, src)
             if p > prim["prelim"]:
-                prim.update(prelim=p, family=sc["family"], score_parts=sc["parts"])
+                prim.update(prelim=p, family=sc["family"], role_type=sc["role_type"], score_parts=sc["parts"])
             prim["flags"] = sorted(set(prim["flags"]) | set(flags))
             by_url[uk] = ident
             if fk:
                 by_fz[fk] = ident
             continue
         it.update(key=uk, fkey=fk, flags=flags, sources=[src], alt_urls=[], prelim=p, family=sc["family"],
-                  score_parts=sc["parts"])
+                  role_type=sc["role_type"], score_parts=sc["parts"])
         keep[uk] = it
         by_url[uk] = uk
         if fk:

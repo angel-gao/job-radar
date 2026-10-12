@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-12 (night): role type
+
+- Every row gets a `role_type`: engineering, mixed (engineering with substantial code on real hardware, such as robotics or embedded software, firmware and flight software) or software (mostly writing code). Software rows lose 10 points so engineering roles rank first; the routine shows the type as a column in the digest.
+- `verified_summary.txt` has a type column after the suggestion.
+
 ## 2026-10-12 (second pass): 37 more boards, link and scoring fixes
 
 Sources
