@@ -16,6 +16,7 @@ Usage:
       [--quick] [--workers 8] [--max-per-source 300] [--only "Waabi,Cohere"]
 """
 import argparse
+import binascii
 import datetime as dt
 import email.utils
 import gzip
@@ -314,10 +315,12 @@ NONENG_RE = re.compile(
     r"assembler|assembleur|welder|soudeur|machinist|machiniste|forklift|dispatcher|cashier|cook|electrician|"
     r"plumber|millwright|articling|communications|brand|social media|event|treasury|tax|audit|actuar|underwrit|"
     r"claims|mortgage|banking advisor|teller|physician|pharmac|dental|clinical|therapist|professor|faculty|lecturer|postdoc|clerk|coordinator|coordonn|planner|planificateur|scheduler|recruiter|actuar|consultant|proposal|administrator|admin|venture|fund|orthop|registered|licensed practical|caregiver|teacher|tutor|librarian|chaplain|barista|server|host|guard|cleaner|labou?rer|painter|carpenter|mechanic\b|installer|field service|technicien|technician(?! engineer))\b", re.I)
+SALES_RECRUIT_RE = re.compile(r"\b(sales|recruit\w*|talent acquisition|account (executive|manager)|marketing|"
+                              r"business development)\b", re.I)
 HARD_NONENG_RE = re.compile(
     r"technician|technicien|technologist|technologue|assembler|assembleur|operator|op[ée]rat(eur|rice)|repair|r[ée]parat|"
     r"installer|installateur|welder|soudeur|machinist|machiniste|mechanic\b|m[ée]canicien|electrician|[ée]lectricien|"
-    r"millwright|driver|chauffeur|annotat|labell?er|rater\b|speaker|tutor|translator|writer\b|faculty|professor|"
+    r"millwright|\bapprentic(e|es|eship)\b|\bapprenti(e|es|s)?\b|\binspect(or|eur|rice)\b|adjoint(e)? technique|driver|chauffeur|annotat|labell?er|rater\b|speaker|tutor|translator|writer\b|faculty|professor|"
     r"banker|personal banking|teller|coordinator|coordonnat|instructional|technical sales|"
     r"lecturer|tenure|teaching assistant|\bTA\b|\bCUPE\b|charg[ée]e? de cours|post-?doc|"
     r"\b(robotics|mech|maintenance|field|lab|electronics?|controls?|automation|plc|service|services|it|cnc) tech\b|\btech\s*$", re.I)
@@ -330,7 +333,7 @@ NEWGRAD_RE = re.compile(
     r"\bdipl[ôo]m[ée]|programme d'acc[ée]l[ée]ration|"
     r"scientist i\b|level 1\b|\bL1\b|\bEIT\b|engineer[- ]in[- ]training|ing[ée]nieur(e)? stagiaire|\bCPI\b|"
     r"graduate (engineer|program|programme|development|trainee|rotation|scheme)|rotational|leadership development|"
-    r"early[- ]career|early talent|campus|university grad|university recruiting|trainee|apprenti|d[ée]butant|"
+    r"early[- ]career|early talent|campus|university grad|university recruiting|trainee|d[ée]butant|"
     r"nouvel(le)? dipl|0-[23] years|0 to [23] years)", re.I)
 DOMAIN_RE = re.compile(
     r"(robot|autonom|self[- ]driving|driverless|perception|computer vision|\bvision\b|machine learning|\bML\b|\bAI\b|"
@@ -352,9 +355,10 @@ OFFFIELD_RE = re.compile(
     r"r[ée]frig[ée]ration|geoscien|g[ée]oscien|coastal|c[ôo]tier|water treatment|traitement (de l'|des )?eaux?|b[âa]timent|"
     r"building (mechanical|services|systems)|"
     r"HVAC|piping|plumbing|petroleum|chemical process|process engineer|water resources|wastewater|transportation planning|"
-    r"traffic|surveying|architectural|building science|construction|contracts?\b|supply chain|logistics|business analyst|"
+    r"traffic|surveying|architectural|building science|\bconstruction|contracts?\b|supply chain|logistics|business analyst|"
     r"\bDBA\b|database administrator|\bSAP\b|salesforce|\bCRM\b|\bERP\b|clearing|actuar|\btax\b|audit|cost controller|"
-    r"land development|municipal|bridge|roadway|highway|pavement|GIS analyst|urban|die process|tooling|weld|"
+    r"land development|municipal|bridge|\bponts?\b|ouvrages? d.art|stormwater|eaux pluviales|g[ée]nie routier|\broutier|"
+    r"roadway|highway|pavement|GIS analyst|urban|die process|tooling|weld|"
     r"maintenance|facilities|quality inspector|production|manufacturing engineer|industrial engineer|reliability engineer)", re.I)
 INSCOPE_RE = re.compile(
     r"(robot|autonom|\bcontrols?\b|embedded|firmware|perception|vision|machine learning|\bML\b|\bAI\b|mechatronic|automation|"
@@ -391,6 +395,8 @@ def classify(it, employer_source):
     if not t or len(t) < 4:
         return False, "no_title", flags
     if NONENG_RE.search(t) and not re.search(r"engineer|ing[ée]nieur|developer|scientist|robot|automation", t, re.I):
+        return False, "non_engineering", flags
+    if SALES_RECRUIT_RE.search(t) and not re.search(r"engineer|ing[ée]nieur|developer|scientist", t, re.I):
         return False, "non_engineering", flags
     if (HARD_NONENG_RE.search(t) and not re.search(r"\bengineer\b|\bing[ée]nieur(e)?\b|developer|d[ée]veloppeu|scientist", t, re.I)
             and not NG_STRICT_RE.search(t)):
@@ -549,7 +555,7 @@ NOTFIT_TITLE_RE = re.compile(
     r"game (design|designer|programmer)|gameplay|mobile (developer|engineer)|\biOS\b|android|cyber|security (analyst|"
     r"engineer|specialist|architect)|penetration|database|\bDBA\b|technical writer|support (engineer|specialist)|"
     r"solutions? (engineer|architect|consultant)|pre-?sales|sales engineer|customer success|implementation (consultant|"
-    r"specialist|engineer)|stationary engineer|building operator|power engineer|estimator|cost engineer|construction|"
+    r"specialist|engineer)|stationary engineer|building operator|power engineer|estimator|cost engineer|\bconstruction|"
     r"\bcivil\b|structural|geotech|environmental|chemical|process engineer|piping|\bHVAC\b|mechanical design|drafter|"
     r"draftsperson|\bCAD\b|data engineer|analytics engineer|etl|\bBI\b|quality assurance|\bQA\b|tester|manual test|"
     r"business|financial|finance|accounting|marketing|legal|consultant|consulting|conseiller|advisor|analyste d'affaires|"
@@ -591,7 +597,8 @@ GOOD_SECTORS = {"robotics", "automotive", "aerospace", "industrial", "research",
 TARGET_COMPANIES = set()   # normalized employer names from sources.json, filled in main()
 
 
-HARD_NOTFIT_RE = re.compile(r"internal control|project controls?|cost control|cash control|document control|"
+HARD_NOTFIT_RE = re.compile(r"internal control|quality control|contr[ôo]le (de la )?qualit[ée]|"
+                            r"\b(second|third|fourth) engineer\b|engineering technician|technicien(ne)? en g[ée]nie|project controls?|cost control|cash control|document control|"
                             r"air traffic|\bATC\b|supplier quality|fire (prevention|protection|safety)|aircraft maintenance|"
                             r"relations developer|developer relations|devrel|developer advocate|"
                             r"(financial|project|cost|plant|regional|divisional|area) controller|contr[ôo]leur (financier|de gestion)", re.I)
@@ -964,6 +971,27 @@ def _wd_canada_facets(facets):
     return None, "none"
 
 
+# Some tenants send no locationsText. Parsons puts 'CA - ON, Markham' or 'CA, NS - Halifax' in the first
+# bulletField; Thomson Reuters only has the place in the link (/job/United-States-of-America-Eagan-Minnesota/...).
+# Without a location, run_employer would give the row the entry's default (ON/QC) cities.
+_WD_BULLET_LOC_RE = re.compile(r"^[A-Z]{2}\s*[-,]\s*[A-Z]{2}\s*[-,]\s*\S")
+
+
+def workday_location(job):
+    loc = job.get("locationsText") or ""
+    if loc:
+        return loc
+    for b in job.get("bulletFields") or []:
+        if isinstance(b, str) and _WD_BULLET_LOC_RE.match(b.strip()):
+            return b.strip()
+    m = re.match(r"/job/([^/]+)/", job.get("externalPath") or "")
+    if m:
+        place = m.group(1).replace("-", " ").strip()
+        if LOC_RE.search(place) or OUTSIDE_RE.search(place):
+            return place
+    return ""
+
+
 def p_workday(src):
     url = src["url"]
     m = re.match(r"(https://[^/]+)/wday/cxs/([^/]+)/([^/]+)/jobs", url)
@@ -974,14 +1002,21 @@ def p_workday(src):
     hdr = {"Accept": "application/json"}
     out, errs, got = [], [], set()
 
+    # myworkdaysite.com boards (Magna, Microchip) serve postings under /recruiting/<tenant>/<site>/job/...;
+    # host/<site>/job/... answers HTTP 500 there
+    if host.endswith(".myworkdaysite.com"):
+        link_base = "%s/recruiting/%s/%s" % (host, tenant, site)
+    else:
+        link_base = "%s/%s" % (host, site)
+
     def emit(posts):
         for job in posts:
             ext = job.get("externalPath", "")
-            u = "%s/%s%s" % (host, site, ext)
+            u = link_base + ext
             if u in got:
                 continue
             got.add(u)
-            out.append(item(job.get("title"), u, job.get("locationsText", ""), job.get("postedOn"),
+            out.append(item(job.get("title"), u, workday_location(job), job.get("postedOn"),
                             " ".join(job.get("bulletFields", []) or []), "", src["name"],
                             {"detail_api": "%s/wday/cxs/%s/%s%s" % (host, tenant, site, ext)}))
 
@@ -2006,45 +2041,52 @@ def p_hibob(src):
 # src: url, optional method/body/headers (like html_generic), required "row_re" (named groups: title, url,
 #      location, posted, snippet; any other named group is appended to the snippet), optional "json_path"
 #      (dotted path to an HTML string inside a JSON reply, e.g. WordPress admin-ajax {"data":{"html":...}}),
-#      optional "section_re" (one group; its text becomes the location of the rows that follow it).
+#      optional "section_re" (one group; its text becomes the location of the rows that follow it),
+#      optional "extra_urls" (more pages read the same way) and "unquote" (percent-decode the HTML first,
+#      Universite de Sherbrooke).
 # ----------------------------------------------------------------------------
 
 def p_html_rows(src):
-    st, txt = http(src["url"], src.get("method", "GET"), src.get("body"), src.get("headers"))
-    if st is None or st >= 400:
-        return [], "HTTP %s" % st
-    if src.get("json_path"):
-        try:
-            obj = json.loads(txt)
-        except Exception:
-            return [], "not JSON"
-        for k in src["json_path"].split("."):
-            obj = obj.get(k) if isinstance(obj, dict) else None
-        txt = obj if isinstance(obj, str) else ""
-    base = src.get("base_url") or src["url"]
     row_re = re.compile(src["row_re"], re.I | re.S)
-    sections = [("", txt)]
-    if src.get("section_re"):
-        ms = list(re.finditer(src["section_re"], txt, re.I | re.S))
-        sections = [(strip_tags(m.group(1)), txt[m.end(): ms[i + 1].start() if i + 1 < len(ms) else len(txt)])
-                    for i, m in enumerate(ms)]
-    out, seen = [], set()
-    for sec_loc, chunk in sections:
-        for m in row_re.finditer(chunk):
-            g = m.groupdict()
-            title = strip_tags(g.get("title") or "", 200)
-            if not title:
+    out, seen, errs = [], set(), []
+    for page_url in [src["url"]] + list(src.get("extra_urls") or []):
+        st, txt = http(page_url, src.get("method", "GET"), src.get("body"), src.get("headers"))
+        if st is None or st >= 400:
+            errs.append("HTTP %s" % st)
+            continue
+        if src.get("json_path"):
+            try:
+                obj = json.loads(txt)
+            except Exception:
+                errs.append("not JSON")
                 continue
-            u = abs_url(base, g.get("url") or "") or src.get("careers_url", "")
-            if (u, title) in seen:
-                continue
-            seen.add((u, title))
-            extra = " ".join(strip_tags(v) for k, v in g.items()
-                             if k not in ("title", "url", "location", "posted", "snippet") and v)
-            loc = strip_tags(g.get("location") or "") or sec_loc
-            out.append(item(title, u, loc, strip_tags(g.get("posted") or "") or None,
-                            ("%s %s" % (strip_tags(g.get("snippet") or ""), extra)).strip(), "", src["name"]))
-    return out, None
+            for k in src["json_path"].split("."):
+                obj = obj.get(k) if isinstance(obj, dict) else None
+            txt = obj if isinstance(obj, str) else ""
+        if src.get("unquote"):
+            txt = urllib.parse.unquote(txt)
+        base = src.get("base_url") or page_url
+        sections = [("", txt)]
+        if src.get("section_re"):
+            ms = list(re.finditer(src["section_re"], txt, re.I | re.S))
+            sections = [(strip_tags(m.group(1)), txt[m.end(): ms[i + 1].start() if i + 1 < len(ms) else len(txt)])
+                        for i, m in enumerate(ms)]
+        for sec_loc, chunk in sections:
+            for m in row_re.finditer(chunk):
+                g = m.groupdict()
+                title = strip_tags(g.get("title") or "", 200)
+                if not title:
+                    continue
+                u = abs_url(base, g.get("url") or "") or src.get("careers_url", "")
+                if (u, title) in seen:
+                    continue
+                seen.add((u, title))
+                extra = " ".join(strip_tags(v) for k, v in g.items()
+                                 if k not in ("title", "url", "location", "posted", "snippet") and v)
+                loc = strip_tags(g.get("location") or "") or sec_loc
+                out.append(item(title, u, loc, strip_tags(g.get("posted") or "") or None,
+                                ("%s %s" % (strip_tags(g.get("snippet") or ""), extra)).strip(), "", src["name"]))
+    return out, ("; ".join(errs) if errs and not out else None)
 
 
 # ----------------------------------------------------------------------------
@@ -2076,7 +2118,341 @@ def p_commoninja_jobs(src):
     return out, None
 
 
+# ----------------------------------------------------------------------------
+# PeopleSoft Candidate Gateway, Fluid UI (HRS_HRAM_FL.HRS_CG_SEARCH_FL), e.g. SickKids and Western University.
+# url: <host>/psc/<db>/<portal>/HRMS/c/HRS_HRAM_FL.HRS_CG_SEARCH_FL.GBL?Page=HRS_APP_SCHJOB_FL&Action=U[&SiteId=n]
+# One GET in a cookie session returns the whole grid server-rendered (a cookie-less client gets a "cookies
+# enabled" page). Values sit in <span class='ps_box-value' id='<FIELD>$<row>'>. Rows carry no links; the posting
+# opens at Page=HRS_APP_JBPST_FL with the Job ID. With en-CA PeopleSoft prints dd/mm/yyyy, which norm_date reads
+# as mm/dd, so the request asks for en-US (yyyy-mm-dd). Optional "skip_family_re" drops rows by Job Family.
+# ----------------------------------------------------------------------------
+
+_PS_CG_FIELD_RE = re.compile(r"id='(SCH_JOB_TITLE|HRS_APP_JBSCH_I_HRS_JOB_OPENING_ID|LOCATION|HRS_APP_JBSCH_I_HRS_DEPT_DESCR|"
+                             r"JOB_FAMILY_LABEL|SCH_OPENED)\$(\d+)'\s*>(.*?)</span>", re.S)
+
+
+def p_peoplesoft_cg(src):
+    url = src["url"]
+    sm = re.search(r"[?&]SiteId=(\d+)", url)
+    site = sm.group(1) if sm else "1"
+    base = url.split("?")[0]
+    skip = re.compile(src["skip_family_re"], re.I) if src.get("skip_family_re") else None
+    st, txt = _Session().req(url, headers={"Accept-Language": "en-US,en;q=0.9"})
+    if st is None or st >= 400:
+        return [], "HTTP %s" % st
+    rows = {}
+    for m in _PS_CG_FIELD_RE.finditer(txt or ""):
+        rows.setdefault(int(m.group(2)), {})[m.group(1)] = strip_tags(m.group(3))
+    out = []
+    for i in sorted(rows):
+        r = rows[i]
+        jid, title = r.get("HRS_APP_JBSCH_I_HRS_JOB_OPENING_ID", ""), r.get("SCH_JOB_TITLE", "")
+        if not (jid and title):
+            continue
+        fam = r.get("JOB_FAMILY_LABEL", "")
+        if skip and skip.search(fam):
+            continue
+        link = "%s?Page=HRS_APP_JBPST_FL&Action=U&FOCUS=Applicant&SiteId=%s&JobOpeningId=%s&PostingSeq=1" % (base, site, jid)
+        snippet = " | ".join(x for x in (r.get("HRS_APP_JBSCH_I_HRS_DEPT_DESCR", ""), fam) if x)
+        out.append(item(title, link, r.get("LOCATION", ""), r.get("SCH_OPENED") or None, snippet, "", src["name"]))
+    if not out and "SCH_JOB_TITLE$" not in (txt or "") and "jobs found" not in (txt or ""):
+        return [], "no result grid"
+    return out, None
+
+
+# ----------------------------------------------------------------------------
+# PeopleSoft Candidate Gateway, classic UI behind a portal page (HRS_HRAM.HRS_APP_SCHJOB), e.g. McMaster University.
+# url: the portal (psp) search URL. The portal GET signs the browser in as the public guest; its iframe
+# "ptifrmtgtframe" (psc) holds the grid and returns the sign-in page when fetched on its own, so both GETs share
+# one cookie session. Rows: POSTINGLINK$n ("TITLE - <id>", a postback carrying HRS_JOB_OPEN_ID_PB.<id>) and
+# JOBATTRIBUTES$n ("Department: .. | Location: .. | Posted Date: yyyy/mm/dd"). First page only (25 rows, newest
+# first). Link: job_url_template with {id} (the portal's Page=HRS_APP_JBPST deep link).
+# ----------------------------------------------------------------------------
+
+_PSC_LINK_RE = re.compile(r"id='POSTINGLINK\$(\d+)'[^>]*href=\"[^\"]*HRS_JOB_OPEN_ID_PB\.(\d+)[^\"]*\"[^>]*>(.*?)</a>", re.S)
+_PSC_ATTR_RE = re.compile(r"id='JOBATTRIBUTES\$(\d+)'[^>]*>(.*?)</span>", re.S)
+
+
+def p_peoplesoft_classic(src):
+    s = _Session()
+    st, txt = s.req(src["url"])
+    if st is None or st >= 400:
+        return [], "HTTP %s" % st
+    fm = re.search(r'id="ptifrmtgtframe"[^>]*\ssrc="([^"]+)"', txt)
+    if fm:
+        st, txt = s.req(html.unescape(fm.group(1)), headers={"Referer": src["url"]})
+        if st is None or st >= 400:
+            return [], "iframe HTTP %s" % st
+    attrs = {i: strip_tags(a) for i, a in _PSC_ATTR_RE.findall(txt)}
+    tmpl = src.get("job_url_template") or ""
+    out, seen = [], set()
+    for idx, jid, title in _PSC_LINK_RE.findall(txt):
+        if jid in seen:
+            continue
+        seen.add(jid)
+        t = re.sub(r"\s*-\s*%s\s*$" % jid, "", strip_tags(title))
+        f = {k.strip().lower(): v.strip() for k, v in re.findall(r"([A-Za-z ]+):\s*([^|]+)", attrs.get(idx, ""))}
+        link = tmpl.replace("{id}", jid) if tmpl else src.get("careers_url", "")
+        out.append(item(t, link, f.get("location", ""), f.get("posted date"),
+                        "Department: %s" % f.get("department", ""), "", src["name"]))
+    return out, (None if out else "no rows (sign-in page or layout change)")
+
+
+# ----------------------------------------------------------------------------
+# Technomedia / Signature career portal (jobs-ca.technomedia.com/<client>/), e.g. York University.
+# Every link is "?_4x" + hex(gzip(query string)) carrying session ids and a signature. The job list
+# (processItem=portal.jobposting.j300) renders only inside the session that loaded the home page, so: GET home,
+# follow the home page's own j300 link, read the result table (50 rows, newest first). Row links change every
+# session; week-to-week identity rests on the fuzzy key (company|title|city).
+# ----------------------------------------------------------------------------
+
+def _tm_query(href):
+    m = re.match(r"\?_4x([0-9A-Fa-f]+)", href or "")
+    if not m:
+        return ""
+    try:
+        return gzip.decompress(binascii.unhexlify(m.group(1))).decode("utf-8", "replace")
+    except Exception:
+        return ""
+
+
+def p_technomedia(src):
+    base = src["url"]
+    s = _Session()
+    st, txt = s.req(base)
+    if st is None or st >= 400:
+        return [], "HTTP %s" % st
+    link = None
+    for h in re.findall(r'href="(\?_4x[0-9A-Fa-f]+)"', txt):
+        q = _tm_query(h)
+        if "processItem=portal.jobposting.j300" in q and "showSelection" not in q:
+            link = h
+            break
+    if not link:
+        return [], "no job-list link on the home page"
+    st, txt = s.req(abs_url(base, link), headers={"Referer": base})
+    if st is None or st >= 400:
+        return [], "list HTTP %s" % st
+    out, seen = [], set()
+    for row in re.findall(r"<tr[^>]*>(.*?)</tr>", txt, re.S):
+        anchors = re.findall(r'<a href="(\?_4x[0-9A-Fa-f]+&(?:amp;)?offerid=(\d+))" class="relink"\s*>(.*?)</a>', row, re.S)
+        if not anchors:
+            continue
+        href, oid, _ = anchors[-1]
+        title = strip_tags(anchors[-1][2])
+        if not title or oid in seen:
+            continue
+        seen.add(oid)
+        cols = [strip_tags(c) for c in re.findall(r'<div class="styleColAdd\d">(.*?)</div>', row, re.S)]
+        dm = re.search(r">\s*(\d{2})-(\d{2})-(\d{4})\s*<", row)
+        posted = "%s-%s-%s" % (dm.group(3), dm.group(1), dm.group(2)) if dm else None
+        out.append(item(title, abs_url(base, html.unescape(href)), "", posted, " | ".join(c for c in cols if c), "", src["name"]))
+    return out, (None if out else "no rows")
+
+
+# ----------------------------------------------------------------------------
+# Cornerstone OnDemand career site (<corp>.csod.com/ux/ats/careersite/<id>/home), e.g. Ontario Tech University.
+# The page embeds an anonymous token (csod.context.token) and endpoints.cloud; the site POSTs its searches to
+# <cloud>rec-job-search/external/jobs with Authorization: Bearer <token>.
+# ----------------------------------------------------------------------------
+
+def p_csod(src):
+    m = re.match(r"https://([^.]+)\.csod\.com/ux/ats/careersite/(\d+)/", src["url"])
+    if not m:
+        return [], "bad csod url"
+    corp, site = m.group(1), int(m.group(2))
+    st, page = http(src["url"])
+    if st is None or st >= 400:
+        return [], "HTTP %s" % st
+    tm = re.search(r'"token":"([^"]+)"', page)
+    cm = re.search(r'"cloud":"([^"]+)"', page)
+    if not tm or not cm:
+        return [], "no token"
+    body = {"careerSiteId": site, "careerSitePageId": site, "pageNumber": 1, "pageSize": 100, "cultureId": 1,
+            "searchText": src.get("search_text", ""), "cultureName": "en-US", "states": [], "countryCodes": [], "cities": [],
+            "placeID": "", "radius": None, "postingsWithinDays": None, "customFieldCheckboxKeys": [],
+            "customFieldDropdowns": [], "customFieldRadios": []}
+    j, err = get_json(cm.group(1) + "rec-job-search/external/jobs", "POST", body,
+                      {"Authorization": "Bearer " + tm.group(1), "Accept": "application/json",
+                       "Origin": "https://%s.csod.com" % corp})
+    if j is None:
+        return [], err
+    out = []
+    for r in ((j.get("data") or {}).get("requisitions") or []):
+        locs = "; ".join(", ".join(str(l.get(k)) for k in ("city", "state", "country") if l.get(k)) for l in (r.get("locations") or []))
+        url = "https://%s.csod.com/ux/ats/careersite/%d/home/requisition/%s?c=%s" % (corp, site, r.get("requisitionId"), corp)
+        out.append(item(r.get("displayJobTitle"), url, locs, r.get("postingEffectiveDate"),
+                        (r.get("externalDescription") or "")[:400], "", src["name"]))
+    return out, None
+
+
+# ----------------------------------------------------------------------------
+# Talcura (<client>.talcura.com/Cands/Jobs.aspx), ASP.NET WebForms, e.g. Sunnybrook Research Institute.
+# GET (cookie session) redirects to Jobs.aspx?session=<id>, 10 rows a page. Filtering and paging are postbacks
+# with every hidden field: search = __EVENTTARGET ctl00$ContentPlaceHolder1$btnSearch plus the category combobox
+# text and its ClientState JSON; next page = ctl00$ContentPlaceHolder1$dpJobsPager$ctl02$NextButton.
+# src: category_text / category_value (Sunnybrook Research Institute = 31), keyword (optional), max_pages.
+# ----------------------------------------------------------------------------
+
+_TC_ROW_RE = re.compile(r"<a href='(/Cands/Job\.aspx\?JobId=\d+)'>(.*?)</a>", re.S)
+
+
+def _tc_hidden(txt):
+    d = {}
+    for m in re.finditer(r'<input[^>]+type="hidden"[^>]*>', txt or "", re.I):
+        tag = m.group(0)
+        nm = re.search(r'name="([^"]+)"', tag)
+        if not nm:
+            continue
+        vm = re.search(r'value="([^"]*)"', tag)
+        d[html.unescape(nm.group(1))] = html.unescape(vm.group(1)) if vm else ""
+    return d
+
+
+def _tc_rows(txt, base, src_name):
+    out = []
+    for m in _TC_ROW_RE.finditer(txt or ""):
+        inner = m.group(2)
+        tm = re.search(r'<div class="title">(.*?)</div>', inner, re.S)
+        if not tm:
+            continue
+        title = strip_tags(re.sub(r'<i class="featured">.*?</i>', " ", tm.group(1)))
+        posted = None
+        dm = re.search(r'<div class="date">\s*Posted on\s*(.*?)</div>', inner, re.S)
+        if dm:
+            try:
+                posted = dt.datetime.strptime(re.sub(r"\s+", " ", strip_tags(dm.group(1))).strip(), "%B %d, %Y").date().isoformat()
+            except Exception:
+                posted = None
+        dsm = re.search(r'<div class="desc">(.*)', inner, re.S)
+        desc = strip_tags(re.sub(r'<div class="date">.*?</div>', " ", dsm.group(1))) if dsm else ""
+        out.append(item(title, abs_url(base, m.group(1)), "", posted, desc, "", src_name))
+    return out
+
+
+def p_talcura(src):
+    s = _Session()
+    st, txt = s.req(src["url"])
+    if st is None or st >= 400:
+        return [], "HTTP %s" % st
+    am = re.search(r'<form[^>]+action="([^"]+)"', txt or "")
+    if not am:
+        return [], "no form"
+    post_url = abs_url(src["url"], html.unescape(am.group(1)))
+    hdr = {"Content-Type": "application/x-www-form-urlencoded", "Referer": post_url}
+    fields = _tc_hidden(txt)
+    if src.get("category_value") or src.get("keyword"):
+        fields.update({"__EVENTTARGET": "ctl00$ContentPlaceHolder1$btnSearch", "__EVENTARGUMENT": "",
+                       "ctl00$ContentPlaceHolder1$tbKeyword": src.get("keyword") or ""})
+        if src.get("category_value"):
+            fields["ctl00$ContentPlaceHolder1$cbCategory"] = src.get("category_text") or ""
+            fields["ctl00_ContentPlaceHolder1_cbCategory_ClientState"] = json.dumps(
+                {"logEntries": [], "value": str(src["category_value"]), "text": src.get("category_text") or "",
+                 "enabled": True, "checkedIndices": [], "checkedItemsTextOverflows": False}, separators=(",", ":"))
+        st, txt = s.req(post_url, "POST", urllib.parse.urlencode(fields), hdr)
+        if st is None or st >= 400:
+            return [], "search HTTP %s" % st
+    out, seen = [], set()
+    for _ in range(int(src.get("max_pages") or 10)):
+        new = [r for r in _tc_rows(txt, post_url, src["name"]) if r["url"] not in seen]
+        for r in new:
+            seen.add(r["url"])
+            out.append(r)
+        tot = re.search(r"Jobs\s+(\d+)\s+to\s+(\d+)\s+of\s+(\d+)", strip_tags(txt or ""))
+        if not new or not tot or int(tot.group(2)) >= int(tot.group(3)):
+            break
+        fields = _tc_hidden(txt)
+        fields.update({"__EVENTTARGET": "ctl00$ContentPlaceHolder1$dpJobsPager$ctl02$NextButton", "__EVENTARGUMENT": ""})
+        time.sleep(float(src.get("pause_seconds") or 0.5))
+        st, txt = s.req(post_url, "POST", urllib.parse.urlencode(fields), hdr)
+        if st is None or st >= 400:
+            break
+    return out, (None if out else "no rows")
+
+
+# ----------------------------------------------------------------------------
+# Attrax career sites (careers.wabtec.com). /vacanciessitemap.xml lists every live job as
+# /job/<title-slug>-in-<city-slug>-<state>-<country-slug>-jid-<n>; the /jobs search pages filter with query
+# strings, which robots.txt disallows, so the sitemap is the allowed full list. Titles come from the slug
+# (accents and punctuation are lost). src: url, optional countries (default ["canada"]), states (default on, qc).
+# ----------------------------------------------------------------------------
+
+def p_attrax_sitemap(src):
+    st, txt = http(src["url"])
+    if st is None or st >= 400:
+        return [], "HTTP %s" % st
+    countries = [c.lower() for c in (src.get("countries") or ["canada"])]
+    states = [x.lower() for x in (src.get("states") or ["on", "qc"])]
+    rx = re.compile(r"<loc>\s*(https?://[^<\s]+/job/([a-z0-9-]+)-in-([a-z0-9]+(?:-[a-z0-9]+)*?)-([a-z]{2})-(%s)-jid-(\d+))\s*</loc>"
+                    % "|".join(re.escape(c) for c in countries), re.I)
+    out = []
+    for m in rx.finditer(txt):
+        url, tslug, cslug, stc, country, jid = m.groups()
+        if states and stc.lower() not in states:
+            continue
+        title = re.sub(r"\b(ii|iii|iv)\b", lambda x: x.group(1).upper(), tslug.replace("-", " ").strip())
+        title = title[:1].upper() + title[1:]
+        loc = "%s, %s, %s" % (cslug.replace("-", " ").title(), stc.upper(), country.replace("-", " ").title())
+        out.append(item(title, url, loc, None, "", "", src["name"]))
+    return out, (None if out else "no matching job urls")
+
+
+# ----------------------------------------------------------------------------
+# Oracle Taleo Social Sourcing / SelectMinds portal (<corp>.referrals.selectminds.com), e.g. Tetra Tech Canada.
+# The search is server-side state: GET /jobs/search?all (cookie session) links /ajax/jobs/<sid>/add/<facet>; that
+# call (X-Requested-With) answers {"Status": "OK", "Result": <new sid>, "UserMessage": <count>}, and the result
+# pages /jobs/search/<new sid>[/page<n>] then read without cookies, 10 rows a page.
+# src: url, facet (e.g. "country/7570" = Canada), max_pages.
+# ----------------------------------------------------------------------------
+
+_SM_ROW_RE = re.compile(r'<a href="([^"]+)" class="job_link[^"]*">(.*?)</a>(.*?)(?=<a href="[^"]+" class="job_link|$)', re.S)
+
+
+def p_selectminds(src):
+    base = "https://" + urllib.parse.urlsplit(src["url"]).netloc
+    s = _Session()
+    st, page = s.req(src["url"])
+    if st is None or st >= 400:
+        return [], "HTTP %s" % st
+    m = re.search(r"/ajax/jobs/(\d+)/add/" + re.escape(src["facet"]), page)
+    if not m:
+        return [], "facet %s not on page" % src["facet"]
+    st, js = s.req("%s/ajax/jobs/%s/add/%s" % (base, m.group(1), src["facet"]), headers={"X-Requested-With": "XMLHttpRequest"})
+    try:
+        res = json.loads(js)
+    except Exception:
+        return [], "facet call HTTP %s" % st
+    sid, total = res.get("Result"), int(res.get("UserMessage") or 0)
+    if res.get("Status") != "OK" or not sid:
+        return [], "facet call: %s" % js[:120]
+    out, seen, errs = [], set(), []
+    for n in range(1, int(src.get("max_pages") or 20) + 1):
+        st, txt = http("%s/jobs/search/%s" % (base, sid) + ("" if n == 1 else "/page%d" % n))
+        if st is None or st >= 400:
+            errs.append("HTTP %s" % st)
+            break
+        got = 0
+        for row in _SM_ROW_RE.finditer(txt):
+            link = row.group(1)
+            if link in seen:
+                continue
+            seen.add(link)
+            got += 1
+            lm = re.search(r'<span class="location">(.*?)</span>', row.group(3), re.S)
+            cm = re.search(r'<span class="category">(.*?)</span>', row.group(3), re.S)
+            dm = re.search(r'<p class="jlr_description">(.*?)</p>', row.group(3), re.S)
+            loc = re.sub(r"\s+and \d+ additional locations?$", "", strip_tags(lm.group(1)) if lm else "")
+            out.append(item(strip_tags(row.group(2)), link, loc, None,
+                            "%s %s" % (strip_tags(cm.group(1)) if cm else "", strip_tags(dm.group(1)) if dm else ""),
+                            "", src["name"]))
+        if not got or len(out) >= total:
+            break
+    return out, ("; ".join(errs) if errs and not out else None)
+
+
 PARSERS = {
+    "peoplesoft_cg": p_peoplesoft_cg, "peoplesoft_classic": p_peoplesoft_classic, "technomedia": p_technomedia,
+    "csod": p_csod, "talcura": p_talcura, "attrax_sitemap": p_attrax_sitemap, "selectminds": p_selectminds,
     "greenhouse": p_greenhouse, "lever": p_lever, "ashby": p_ashby, "smartrecruiters": p_smartrecruiters,
     "workable_v3": p_workable_v3, "recruitee": p_recruitee, "bamboohr": p_bamboohr, "workday": p_workday,
     "oracle_hcm": p_oracle_hcm, "icims_json": p_icims_json, "eightfold_pcsx": p_eightfold_pcsx, "amazon": p_amazon,
@@ -2103,6 +2479,9 @@ def run_employer(src):
         items, err = fn(src)
     except Exception as e:
         items, err = [], "%s: %s" % (type(e).__name__, e)
+    if src.get("skip_title_re") and items:
+        skip = re.compile(src["skip_title_re"], re.I)
+        items = [it for it in items if not skip.search(it.get("title") or "")]
     default_loc = ", ".join(src.get("cities", [])[:2])
     for it in items:
         it["company"] = it.get("company") or src["name"]

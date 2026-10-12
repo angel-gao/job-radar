@@ -1,7 +1,7 @@
 {
  "version": 2,
  "generated": "2026-10-12",
- "notes": "Every URL was fetched successfully on 2026-09-13 by the research workflow wf_39809d1e-6ca (see ../research/). ats = parser name in job_radar_fetch.py. clearance_risk: high = most postings citizenship/clearance gated; medium = some; low = none seen. french_likely = Quebec employer where French is usually required. 2026-10-12: research round 2 added employers (field 'added'), repaired boards (field 'repaired'), moved SuccessFactors boards off robots-disallowed /services/, added EngineeringCareers.ca and Espresso-Jobs, and key-gated Adzuna and Google Jobs (SerpApi).",
+ "notes": "Every URL was fetched successfully on 2026-09-13 by the research workflow wf_39809d1e-6ca (see ../research/). ats = parser name in job_radar_fetch.py. clearance_risk: high = most postings citizenship/clearance gated; medium = some; low = none seen. french_likely = Quebec employer where French is usually required. 2026-10-12: research round 2 added employers (field 'added'), repaired boards (field 'repaired'), moved SuccessFactors boards off robots-disallowed /services/, added EngineeringCareers.ca and Espresso-Jobs, and key-gated Adzuna and Google Jobs (SerpApi). Second pass 2026-10-12: 37 employers added after robots.txt and fetcher checks (industrial, utilities, consultancies with rail/electrical roles, AI labs, research hospitals and universities).",
  "employers": [
   {
    "name": "ATS Corporation",
@@ -3180,7 +3180,6 @@
    "careers_url": "https://wd5.myworkdaysite.com/en-US/recruiting/microchiphr/External",
    "clearance_risk": "low",
    "french_likely": false,
-   "notes": "myworkdaysite host: p_workday builds job links as host/site/path, which drops /en-US/recruiting/microchiphr; listing works, links need that prefix",
    "added": "2026-10-12"
   },
   {
@@ -3839,6 +3838,826 @@
    "clearance_risk": "low",
    "french_likely": false,
    "notes": "hand-maintained HTML table of research staff postings; other staff jobs are in PeopleSoft Candidate Gateway (no stateless endpoint)",
+   "added": "2026-10-12"
+  },
+  {
+   "name": "Celestica",
+   "sector": "industrial",
+   "cities": [
+    "Toronto, ON",
+    "Newmarket, ON"
+   ],
+   "ats": "successfactors_html",
+   "url": "https://careers.celestica.com/search/?q=&locationsearch=Canada",
+   "careers_url": "https://careers.celestica.com/",
+   "clearance_risk": "medium",
+   "french_likely": false,
+   "notes": "SuccessFactors RMK, server-rendered /search/ rows (jobTitle-link); locationsearch=Canada gave 69 rows (Toronto HQ, Newmarket plant, 'Remote Employee Canada') on 2026-10-12, Ontario gave 68. A&D postings mention the Controlled Goods Program security assessment. Many 'Student Intern' rows (dropped by the prefilter).",
+   "added": "2026-10-12"
+  },
+  {
+   "name": "Medtronic Canada",
+   "sector": "medtech",
+   "cities": [
+    "Brampton, ON",
+    "Milton, ON"
+   ],
+   "ats": "workday",
+   "url": "https://medtronic.wd1.myworkdayjobs.com/wday/cxs/medtronic/MedtronicCareers/jobs",
+   "search_terms": [
+    "Canada",
+    "Ontario",
+    "Brampton",
+    "engineer"
+   ],
+   "careers_url": "https://medtronic.wd1.myworkdayjobs.com/en-US/MedtronicCareers",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "notes": "Global board (1,040 postings); the parser's country facet keeps the 12 Canadian rows (2026-10-12), mostly sales/clinical/regulatory in Brampton; engineering appears occasionally (Quality Engineer II, Milton; a Sr R&D Engineer, Brampton, seen on a mirror). www.medtronic.com answers curl with an 'Incorrect Browser' bot page, so the board URL came from a third-party how-to-apply page and was verified live on the Workday host.",
+   "added": "2026-10-12"
+  },
+  {
+   "name": "Martinrea International",
+   "sector": "automotive",
+   "cities": [
+    "Vaughan, ON",
+    "Brampton, ON",
+    "Newmarket, ON",
+    "Chatham-Kent, ON",
+    "Tillsonburg, ON",
+    "Saint-Éphrem-de-Beauce, QC"
+   ],
+   "ats": "json_map",
+   "url": "https://martinrea.prevueaps.com/core/jobs/596?getParams=%7B%22isInternal%22%3A0%2C%22showLocation%22%3A1%2C%22showEmploymentType%22%3A1%2C%22showOrgUnit%22%3A1%2C%22showDate%22%3A1%7D",
+   "careers_url": "https://www.martinrea.com/culture/careers/",
+   "headers": {
+    "Accept": "application/json"
+   },
+   "map": {
+    "list": "data.jobs",
+    "title": "title",
+    "url": "jobUrl",
+    "location": [
+     "city",
+     "stateName",
+     "iso3"
+    ],
+    "posted": "startDateRef",
+    "snippet": "employmentType"
+   },
+   "clearance_risk": "low",
+   "french_likely": false,
+   "notes": "martinrea.com/culture/careers links 'Jobs Board' https://martinrea.prevueaps.com/jobs/ (PrevueAPS, an ApplicantPro platform). The board's Vue JobListings component GETs https://martinrea.prevueaps.com/core/jobs/<domainId 596>?getParams=<JSON> (axios params). One call returns every external posting: 75 on 2026-10-12 (CAN 17: ON 13, QC 4; USA 40; DEU 16; MEX 2). Without getParams the endpoint errors. robots.txt disallows only /admin/, /stats/ and the internal job pages.",
+   "added": "2026-10-12"
+  },
+  {
+   "name": "OPTEL Group",
+   "sector": "industrial",
+   "cities": [
+    "Quebec City, QC"
+   ],
+   "ats": "html_jobs",
+   "url": "https://www.optelgroup.com/en/career/",
+   "extra_urls": [
+    "https://www.optelgroup.com/fr/carrieres/"
+   ],
+   "link_re": "optelgroup\\.com/(?:en|fr)/job/[^/]+/?$",
+   "careers_url": "https://www.optelgroup.com/en/career/",
+   "clearance_risk": "low",
+   "french_likely": true,
+   "notes": "WordPress cards <a href=/en/job/<slug>/><h3 class=card__title>..</h3> Location: Canada, QC. EN page 7 jobs (QC, India, Ireland), FR page (linked from EN as the language switch) 7 jobs, all Canada, QC; three QC jobs appear in both languages (two rows each). Location text keeps the 'Type: Full Time' tail.",
+   "added": "2026-10-12"
+  },
+  {
+   "name": "Wabtec Canada",
+   "sector": "rail",
+   "cities": [
+    "Quebec City, QC",
+    "Montreal, QC",
+    "London, ON",
+    "Cambridge, ON",
+    "Wallaceburg, ON"
+   ],
+   "ats": "attrax_sitemap",
+   "url": "https://careers.wabtec.com/vacanciessitemap.xml",
+   "careers_url": "https://careers.wabtec.com/jobs",
+   "clearance_risk": "low",
+   "french_likely": true,
+   "notes": "careers.wabtec.com is an Attrax site fed by SmartRecruiters (apply links go to jobs.smartrecruiters.com; the api.smartrecruiters.com host is not used). /jobs pages and filters with query strings, which robots.txt disallows ('Disallow: /jobs?*'); /sitemap.xml -> /vacanciessitemap.xml lists all 735 live jobs as /job/<title>-in-<city>-<st>-<country>-jid-<n>. row_re keeps ON/QC slugs only (37 of 40 Canadian rows on 2026-10-12). Titles are hyphenated slugs (accents lost), so multi-word patterns such as 'software developer' miss; see new_ats_patterns attrax_sitemap for a parser that unslugs them. Quebec City roles are Evident Canada (a Wabtec company: inspection equipment, computer vision/AI); London ON is Bach-Simpson; old wabtec.wd1.myworkdayjobs.com snippet is obsolete.",
+   "added": "2026-10-12"
+  },
+  {
+   "name": "Enbridge",
+   "sector": "energy",
+   "cities": [
+    "North York, ON",
+    "Chatham, ON",
+    "Sarnia, ON",
+    "London, ON",
+    "Gatineau, QC",
+    "Montreal, QC"
+   ],
+   "ats": "workday",
+   "url": "https://enbridge.wd3.myworkdayjobs.com/wday/cxs/enbridge/enbridge_careers/jobs",
+   "search_terms": [
+    "Ontario",
+    "Quebec",
+    "engineer",
+    "Engineer in Training"
+   ],
+   "careers_url": "https://www.enbridge.com/work-with-enbridge/careers",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "program": "Engineer in Training I reqs",
+   "notes": "careers.enbridge.com (linked from enbridge.com/work-with-enbridge/careers/life-at-enbridge) redirects to enbridge.wd3.myworkdayjobs.com/enbridge_careers. 2026-10-12: board total 52, Canada facet 25 (Calgary and Edmonton heavy; ON: North York, Chatham, Sarnia, London, Mississauga, North Bay; QC: Gatineau, Montreal). Multi-site rows read 'N Locations' and pass as loc_unconfirmed. A separate Summer_Student_Career_Site exists (robots Allow) for students only.",
+   "added": "2026-10-12"
+  },
+  {
+   "name": "CN (Canadian National Railway)",
+   "sector": "rail",
+   "cities": [
+    "Montreal, QC",
+    "Vaughan, ON",
+    "Toronto, ON",
+    "Brampton, ON"
+   ],
+   "ats": "sf_sitemap",
+   "url": "https://careers.cn.ca/sitemap.xml",
+   "careers_url": "https://careers.cn.ca/",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "program": "Early Careers page (internships and co-ops for full-time students; applications September to March)",
+   "program_watch_url": "https://careers.cn.ca/go/Early-Careers/2706017/",
+   "slug_cities": [
+    "Montreal",
+    "Montréal",
+    "Toronto",
+    "Vaughan",
+    "Concord",
+    "Brampton",
+    "Mississauga",
+    "Etobicoke",
+    "Scarborough",
+    "North-York",
+    "Markham",
+    "Oakville",
+    "Burlington",
+    "Hamilton",
+    "Milton",
+    "Halton-Hills",
+    "Georgetown",
+    "Guelph",
+    "Kitchener",
+    "Waterloo",
+    "Cambridge",
+    "Brantford",
+    "Stratford",
+    "Woodstock",
+    "London",
+    "Sarnia",
+    "Windsor",
+    "Niagara-Falls",
+    "Fort-Erie",
+    "St-Catharines",
+    "St.-Catharines",
+    "Belleville",
+    "Kingston",
+    "Brockville",
+    "Cornwall",
+    "Ottawa",
+    "Oshawa",
+    "Pickering",
+    "Ajax",
+    "Whitby",
+    "Cobourg",
+    "Port-Hope",
+    "Barrie",
+    "Washago",
+    "Huntsville",
+    "North-Bay",
+    "Capreol",
+    "Sudbury",
+    "Greater-Sudbury",
+    "Hornepayne",
+    "Foleyet",
+    "Kapuskasing",
+    "Hearst",
+    "Cochrane",
+    "Timmins",
+    "Thunder-Bay",
+    "Fort-Frances",
+    "Rainy-River",
+    "Sioux-Lookout",
+    "Atikokan",
+    "Quebec",
+    "Québec",
+    "Quebec-City",
+    "Lévis",
+    "Levis",
+    "Charny",
+    "Joliette",
+    "Saint-Hyacinthe",
+    "St-Hyacinthe",
+    "Drummondville",
+    "Saint-Laurent",
+    "St-Laurent",
+    "Pointe-Claire",
+    "Dorval",
+    "Lachine",
+    "Laval",
+    "Longueuil",
+    "Saint-Lambert",
+    "Boucherville",
+    "Vaudreuil",
+    "Vaudreuil-Dorion",
+    "Coteau-du-Lac",
+    "Saint-Jean-sur-Richelieu",
+    "Senneterre",
+    "Rouyn-Noranda",
+    "Val-d'Or",
+    "La-Tuque",
+    "Parent",
+    "Garneau",
+    "Shawinigan",
+    "Trois-Rivières",
+    "Trois-Rivieres",
+    "Saguenay",
+    "Jonquière",
+    "Chicoutimi",
+    "Matane",
+    "Mont-Joli",
+    "Rivière-du-Loup",
+    "Sept-Îles",
+    "Baie-Comeau",
+    "Taschereau",
+    "Mirabel",
+    "Saint-Jérôme"
+   ],
+   "max_rows": 300,
+   "notes": "careers.cn.ca is SuccessFactors Recruiting Marketing: the search is client-rendered (rmk-jobs-search) and the RSS sits under robots-disallowed /services/. /sitemap.xml (allowed) is a urlset of /job/<City>-<Title>-<Prov>-<postal>/<id>/ (128 links on 2026-10-12, 64 in ON/QC towns). Province tails are ON, QC, Queb, Québ, AB... plus 4-letter stubs (Brit, Colo, Nouv, Nova, New) that the sf_sitemap regex does not read; without slug_cities those rows would fall back to the entry cities and pass as ON/QC. slug_cities lists CN's ON/QC yards and offices; a posting in an unlisted town is skipped. This replaces the cn360.csod.com Cornerstone site from the first pass (its public search returned 0). Some titles keep a trailing ' CA' from slugs ending '-CA-<Prov>-<postal>' (e.g. 'Manager AI Engineering CA').",
+   "added": "2026-10-12"
+  },
+  {
+   "name": "Énergir",
+   "sector": "energy",
+   "cities": [
+    "Montreal, QC"
+   ],
+   "ats": "sf_sitemap",
+   "url": "https://carrieres.energir.com/sitemap.xml",
+   "careers_url": "https://carrieres.energir.com/search",
+   "clearance_risk": "low",
+   "french_likely": true,
+   "max_rows": 300,
+   "notes": "Linked from energir.com. SuccessFactors Recruiting Marketing: client-rendered search, RSS under robots-disallowed /services/. /sitemap.xml (allowed) is a urlset of /job/<Town>-<Title>-QC-<postal>/<id>/ (32 jobs on 2026-10-12, all QC). No slug_cities on purpose: Énergir posts in many Quebec towns and the parser drops towns that are not listed, so titles keep the town prefix (e.g. 'Montréal Ingénieur_e de chantiers & projets') and the location is 'QC'. French-first postings.",
+   "added": "2026-10-12"
+  },
+  {
+   "name": "GHD Canada",
+   "sector": "consulting",
+   "cities": [
+    "Waterloo, ON",
+    "Toronto, ON",
+    "Mississauga, ON",
+    "Whitby, ON",
+    "Montreal, QC",
+    "Quebec City, QC"
+   ],
+   "ats": "oracle_hcm",
+   "url": "https://ejov.fa.ca2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions?onlyData=true&expand=requisitionList.secondaryLocations&finder=findReqs;siteNumber=CX,limit=200,offset=0,sortBy=POSTING_DATES_DESC,selectedLocationsFacet=300005629082891%3B300005629082883",
+   "careers_url": "https://ejov.fa.ca2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "program": "Grad hiring days (Toronto, Waterloo, Montreal) and 'Engineering Graduate' / 'Upcoming Graduate' reqs",
+   "notes": "Oracle Recruiting Cloud site CX; job links ejov.fa.ca2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/<id> appear on GHD's Toronto/Waterloo new-graduate event page. selectedLocationsFacet = 'ON, Canada' (300005629082891) + 'QC, Canada' (300005629082883) from the board's own locationsFacet: 179 rows in one call on 2026-10-12 (limit 200 is the API cap; all of Canada is 208, worldwide 638). Mostly civil, environmental, water and transport work; electrical and rail graduate reqs also appear. The Oracle host has no robots.txt (HTTP 404).",
+   "added": "2026-10-12"
+  },
+  {
+   "name": "Arcadis Canada",
+   "sector": "consulting",
+   "cities": [
+    "Toronto, ON",
+    "Ottawa, ON",
+    "Quebec City, QC"
+   ],
+   "ats": "eightfold_pcsx_paged",
+   "url": "https://jobs.arcadis.com/api/pcsx/search?domain=arcadis.com&location=Ontario%2C%20Canada&start=0&num=10&sort_by=timestamp",
+   "extra_urls": [
+    "https://jobs.arcadis.com/api/pcsx/search?domain=arcadis.com&location=Quebec%2C%20Canada&start=0&num=10&sort_by=timestamp"
+   ],
+   "careers_url": "https://jobs.arcadis.com/careers?domain=arcadis.com",
+   "pace_seconds": 1.5,
+   "clearance_risk": "low",
+   "french_likely": false,
+   "notes": "careers.arcadis.com (candidate FAQ) links jobs.arcadis.com/careers?domain=arcadis.com, an Eightfold board. PCSX counts on 2026-10-12: location 'Ontario, Canada' 55, 'Quebec, Canada' 2 (all Canada 98). PCSX returns 10 rows per call, so the paged parser makes about 7 calls. robots.txt: 'Disallow: /' with 'Allow: /api/pcsx' and 'Allow: /careers'.",
+   "added": "2026-10-12"
+  },
+  {
+   "name": "Parsons Canada",
+   "sector": "consulting",
+   "cities": [
+    "Markham, ON",
+    "Oakville, ON",
+    "Toronto, ON",
+    "Ottawa, ON",
+    "Montreal, QC"
+   ],
+   "ats": "workday",
+   "url": "https://parsons.wd5.myworkdayjobs.com/wday/cxs/parsons/Search/jobs",
+   "search_terms": [
+    "Canada",
+    "Markham",
+    "Ontario",
+    "engineer"
+   ],
+   "body_facets": {
+    "locations": [
+     "720ba361667b01d4564086580a0ad58a",
+     "720ba361667b01b68eb318580a0afa88",
+     "720ba361667b01f3977a09580a0aaa88",
+     "f533debe0ca801bfd3260dca824f7ea9",
+     "720ba361667b0197b05d1c580a0a0e89",
+     "720ba361667b01d1d054f6580a0ac98c",
+     "720ba361667b0139eaae50580a0af489",
+     "782fb61cff911000d29e59e5bf030000",
+     "f533debe0ca8018b9228c4b4c64fe703"
+    ]
+   },
+   "careers_url": "https://jobs.parsons.com/canada",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "notes": "jobs.parsons.com (Webflow front end; robots.txt disallows its ?search=/?location= pages) sends applicants to parsons.wd5.myworkdayjobs.com/Search. This tenant's CXS rows have no locationsText and no postedOn: the location is bulletFields[0] (e.g. 'CA - ON, Markham'), which p_workday puts in the snippet, so every row gets the entry's default city. body_facets therefore limits the search to the ON/QC location values (Kingston, London, Markham, Oakville, Ottawa, Toronto, Montreal, Quebec City, CA - Remote): 68 rows instead of 104 for all of Canada, of which 48 sit in AB/BC/NT/YT/NS. A new ON/QC office would need its facet id added. Suggested parser change: fall back to bulletFields[0] when locationsText is missing. Canadian work is the Critical Infrastructure group (transport, ITS, rail); 'Intelligent Transportation Systems Engineer' (Markham) asks for junior to intermediate EE grads with 1-8 years. No clearance wording in the 2 Canadian postings read.",
+   "added": "2026-10-12"
+  },
+  {
+   "name": "Mott MacDonald Canada",
+   "sector": "industrial",
+   "cities": [
+    "Toronto, ON"
+   ],
+   "ats": "successfactors_html_multi",
+   "url": "https://apply.mottmac.com/search/?q=&locationsearch=Canada&sortColumn=referencedate&sortDirection=desc",
+   "max_pages": 5,
+   "careers_url": "https://apply.mottmac.com/",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "program": "Blueprint new-graduate program (3-year; 'Graduate <discipline> Engineer - 2027' reqs in Toronto)",
+   "notes": "SAP SuccessFactors RMK board; locationsearch=Canada returned 67 rows on 2026-10-12 (Toronto, Vancouver, Calgary), 20 per page, so the _multi parser (page size read from the first page) with max_pages 5. robots.txt disallows /services/, /applybutton/, /talentcommunity/ etc., not /search/.",
+   "added": "2026-10-12",
+   "program_watch_url": "https://apply.mottmac.com/search/?q=Graduate&locationsearch=Canada"
+  },
+  {
+   "name": "Black & Veatch Canada",
+   "sector": "industrial",
+   "cities": [
+    "Markham, ON"
+   ],
+   "ats": "successfactors_html_multi",
+   "url": "https://careers.bv.com/search/?q=&locationsearch=Canada",
+   "careers_url": "https://careers.bv.com/",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "program": "College category (Graduate Engineer reqs, US-only on 2026-10-12)",
+   "program_watch_url": "https://careers.bv.com/go/College/3661301/",
+   "notes": "SAP SuccessFactors RMK board; locationsearch=Canada returned 18 rows on 2026-10-12 (17 Markham ON, 1 Calgary). B&V titles 'Staff' and 'Associate' are early-career levels, but the fetcher's senior filter drops 'Staff'. robots.txt does not disallow /search/.",
+   "added": "2026-10-12"
+  },
+  {
+   "name": "Worley Canada",
+   "sector": "industrial",
+   "cities": [
+    "Markham, ON",
+    "Oakville, ON",
+    "Sarnia, ON",
+    "Toronto, ON"
+   ],
+   "ats": "taleo_rest",
+   "url": "https://worleyparsons.taleo.net/careersection/rest/jobboard/searchjobs?lang=en&portal=101430233",
+   "careersection": "ext",
+   "body": {
+    "multilineEnabled": false,
+    "sortingSelection": {
+     "sortBySelectionParam": "3",
+     "ascendingSortingOrder": "false"
+    },
+    "fieldData": {
+     "fields": {
+      "KEYWORD": "",
+      "LOCATION": ""
+     },
+     "valid": true
+    },
+    "filterSelectionParam": {
+     "searchFilterSelections": [
+      {
+       "id": "LOCATION",
+       "selectedValues": [
+        "60660483405",
+        "60760483405"
+       ]
+      }
+     ]
+    },
+    "advancedSearchFiltersSelectionParam": {
+     "searchFilterSelections": []
+    }
+   },
+   "careers_url": "https://worleyparsons.taleo.net/careersection/ext/jobsearch.ftl?lang=en",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "notes": "Taleo Enterprise section 'ext' (portalNo 101430233 from jobsearch.ftl). LOCATION facets from the response's facetResults: Ontario 60660483405 (24 jobs), Quebec 60760483405 (1), Canada 54360483405 (109, mostly Alberta). 'Multiple Locations' rows come through as loc_unconfirmed. No robots.txt on the host (404).",
+   "added": "2026-10-12"
+  },
+  {
+   "name": "Wind River (Aptiv) Kanata",
+   "sector": "automotive",
+   "cities": [
+    "Kanata, ON"
+   ],
+   "ats": "workday",
+   "url": "https://aptiv.wd5.myworkdayjobs.com/wday/cxs/aptiv/aptiv_careers/jobs",
+   "search_terms": [
+    "Kanata",
+    "Ottawa",
+    "Canada"
+   ],
+   "careers_url": "https://aptiv.wd5.myworkdayjobs.com/aptiv_careers",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "notes": "Wind River (VxWorks, Helix, eLxr) hires through Aptiv's Workday; Kanata postings carry the location 'CAN Kanata (2), ON - WR'. The parser's Canada facet returned 22 rows on 2026-10-12, all Wind River Kanata. robots.txt: Allow /APTIV_CAREERS/, Disallow /refreshFacet/ only.",
+   "added": "2026-10-12"
+  },
+  {
+   "name": "Infineon Technologies Canada (ex-GaN Systems)",
+   "sector": "semis",
+   "cities": [
+    "Ottawa, ON"
+   ],
+   "ats": "eightfold_pcsx",
+   "url": "https://jobs.infineon.com/api/pcsx/search?domain=infineon.com&location=Canada&start=0&num=10",
+   "extra_urls": [
+    "https://jobs.infineon.com/api/pcsx/search?domain=infineon.com&location=Canada&start=10&num=10"
+   ],
+   "careers_url": "https://jobs.infineon.com/careers?domain=infineon.com",
+   "clearance_risk": "high",
+   "french_likely": false,
+   "notes": "Eightfold PCSX; robots.txt is 'Disallow: /' with 'Allow: /api/pcsx' and 'Allow: /careers'. One Canada posting on 2026-10-12 (Staff IC Product Engineer, Ottawa (Kanata)) whose text says 'Must be able to obtain a Secret Clearance' and Controlled Goods eligibility, hence clearance_risk high.",
+   "added": "2026-10-12"
+  },
+  {
+   "name": "LG Electronics Canada / LG AI Research Canada",
+   "sector": "ml",
+   "cities": [
+    "Toronto, ON",
+    "Mississauga, ON"
+   ],
+   "ats": "dayforce",
+   "url": "https://jobs.dayforcehcm.com/api/geo/lgeci/jobposting/search",
+   "body": {
+    "clientNamespace": "lgeci",
+    "jobBoardCode": "CANDIDATEPORTAL",
+    "cultureCode": "en-US",
+    "distanceUnit": 0
+   },
+   "careers_url": "https://jobs.dayforcehcm.com/lgeci/CANDIDATEPORTAL",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "notes": "LG's career page ('Join the Team', next to its LG AI Research Canada text) links can231.dayforcehcm.com/CandidatePortal/en-US/lgeci, which redirects to jobs.dayforcehcm.com/lgeci/CANDIDATEPORTAL. 18 postings on 2026-10-12, mostly LG Electronics Canada business roles; the Toronto AI Lab posting (Agentic AI Researcher) asks for a PhD or MSc + 3 years. Dayforce robots.txt has comments only, no rules.",
+   "added": "2026-10-12"
+  },
+  {
+   "name": "Palona AI",
+   "sector": "ml",
+   "cities": [
+    "Toronto, ON"
+   ],
+   "ats": "workable_widget",
+   "url": "https://apply.workable.com/api/v1/widget/accounts/palona",
+   "careers_url": "https://apply.workable.com/palona/",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "notes": "Restaurant AI agents (vision-language models, speech). Board linked from palona.ai. The widget API returns one row per location (Los Altos, New York, Toronto) with the same shortcode; the Toronto row survives the prefilter.",
+   "added": "2026-10-12"
+  },
+  {
+   "name": "Altis Labs",
+   "sector": "medtech",
+   "cities": [
+    "Toronto, ON"
+   ],
+   "ats": "ashby",
+   "url": "https://api.ashbyhq.com/posting-api/job-board/Altis%20Labs",
+   "careers_url": "https://jobs.ashbyhq.com/Altis%20Labs",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "notes": "AI on routine radiology scans for oncology trials (IPRO model); Toronto HQ; Series A US$25M in Sept 2026. Board linked from altislabs.com. All 4 current roles are senior or US.",
+   "added": "2026-10-12"
+  },
+  {
+   "name": "Google DeepMind",
+   "sector": "ml",
+   "cities": [
+    "Montreal, QC",
+    "Toronto, ON"
+   ],
+   "ats": "html_jobs",
+   "url": "https://www.google.com/about/careers/applications/jobs/results/?company=DeepMind&location=Canada",
+   "careers_url": "https://deepmind.google/careers/",
+   "link_re": "/about/careers/applications/jobs/results/\\d+-",
+   "loc_before": true,
+   "clearance_risk": "low",
+   "french_likely": false,
+   "notes": "deepmind.google/careers links to Google's careers site filtered by company=DeepMind, so DeepMind roles are Google postings. The existing Google entry reads only target_level=EARLY; this entry reads every level for DeepMind in Canada (page 1 only: robots.txt disallows &page=). Mostly PhD or 2+ years.",
+   "added": "2026-10-12"
+  },
+  {
+   "name": "Holland Bloorview Kids Rehabilitation Hospital (Bloorview Research Institute)",
+   "sector": "research",
+   "cities": [
+    "Toronto, ON"
+   ],
+   "ats": "html_rows",
+   "url": "https://www.appone.com/Branding/ReqTemplate/BrowseAllJobsbyCategory.asp?Type=REQ&FromID=1&ClientID=2706&B_ID=55&JobCode=0&CountryID=15&LanguageID=2&servervar=hollandbloorview.appone.com",
+   "careers_url": "https://hollandbloorview.ca/about-us/working-with-us/current-job-opportunities",
+   "row_re": "<a href=\"(?P<url>https://www\\.appone\\.com/MainInfoReq\\.asp\\?R_ID=[^\"]+)\">\\s*(?P<title>[^<]*?)\\s+-\\s+(?P<location>ON, [^<]*?)\\s+-\\s+Job\\s*</a>",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "notes": "AppOne (Paychex) board embedded as an iframe on the hospital's careers page; the 'Browse All Jobs by Category' link is a plain GET list of every open requisition. Research roles sit under the Research category.",
+   "added": "2026-10-12"
+  },
+  {
+   "name": "SNOLAB",
+   "sector": "research",
+   "cities": [
+    "Lively, ON",
+    "Sudbury, ON"
+   ],
+   "ats": "html_rows",
+   "url": "https://www.snolab.ca/employment/job-opportunities/",
+   "careers_url": "https://www.snolab.ca/employment/job-opportunities/",
+   "row_re": "<a id=\"wp-block-file--media-[^\"]*\" href=\"(?P<url>[^\"]+)\"[^>]*>(?P<title>[^<]+)</a>",
+   "clearance_risk": "medium",
+   "french_likely": false,
+   "notes": "WordPress page; each posting is a PDF file block. Page states priority to Canadian citizens and permanent residents (immigration priority, not a clearance). Applications by e-mail to jobs@snolab.ca.",
+   "added": "2026-10-12"
+  },
+  {
+   "name": "Perimeter Institute (staff roles)",
+   "sector": "research",
+   "cities": [
+    "Waterloo, ON"
+   ],
+   "ats": "html_jobs",
+   "url": "https://perimeterinstitute.ca/careers",
+   "careers_url": "https://perimeterinstitute.ca/careers",
+   "link_re": "perimeterinstitute\\.ca/jobs/[a-z0-9-]+$",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "notes": "Drupal careers page linking /jobs/<slug>. title_re drops the standing 'Perimeter Postdoctoral Program' and 'Visiting Researchers Program' pages. On 2026-10-12: faculty, chair, advancement and engagement roles; no technical staff posting.",
+   "added": "2026-10-12",
+   "title_re": "^(?!.*\\bProgram\\s*$)"
+  },
+  {
+   "name": "SickKids (Hospital for Sick Children) incl. Research Institute",
+   "sector": "research",
+   "cities": [
+    "Toronto, ON"
+   ],
+   "ats": "peoplesoft_cg",
+   "url": "https://career.sickkids.ca:8001/psc/CRHCMPRD/CAREER/HRMS/c/HRS_HRAM_FL.HRS_CG_SEARCH_FL.GBL?Page=HRS_APP_SCHJOB_FL&Action=U&FOCUS=Applicant&SiteId=1",
+   "skip_family_re": "^(Physicians|Nursing|Nursing Specialist)$",
+   "careers_url": "https://www.sickkids.ca/en/careers-volunteer/careers/",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "added": "2026-10-12"
+  },
+  {
+   "name": "Sunnybrook Research Institute",
+   "sector": "research",
+   "cities": [
+    "Toronto, ON"
+   ],
+   "ats": "talcura",
+   "url": "https://sunnybrook.talcura.com/Cands/Jobs.aspx",
+   "category_text": "Sunnybrook Research Institute",
+   "category_value": "31",
+   "max_pages": 8,
+   "careers_url": "https://sunnybrook.talcura.com/Cands/Jobs.aspx",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "added": "2026-10-12"
+  },
+  {
+   "name": "University of Guelph (staff research roles)",
+   "sector": "research",
+   "cities": [
+    "Guelph, ON"
+   ],
+   "ats": "html_jobs",
+   "url": "https://careers.uoguelph.ca/search/?q=&sortColumn=referencedate&sortDirection=desc",
+   "extra_urls": [
+    "https://careers.uoguelph.ca/search/?q=&sortColumn=referencedate&sortDirection=desc&startrow=20",
+    "https://careers.uoguelph.ca/search/?q=&sortColumn=referencedate&sortDirection=desc&startrow=40"
+   ],
+   "link_re": "careers\\.uoguelph\\.ca/job/[^/]+/\\d+/?$",
+   "careers_url": "https://careers.uoguelph.ca/go/Staff-and-Management/8665947/",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "added": "2026-10-12",
+   "notes": "SuccessFactors tile layout: 20 jobs a page and each job repeats its title link three times, so successfactors_html (25-row step) skips rows 21-25; html_jobs reads /search/ with startrow=20 and 40 and dedups by URL. 39 jobs on 2026-10-12, most faculty."
+  },
+  {
+   "name": "École de technologie supérieure (ÉTS) (research staff)",
+   "sector": "research",
+   "cities": [
+    "Montreal, QC"
+   ],
+   "ats": "taleo_tbe",
+   "url": "https://tre.tbe.taleo.net/tre01/ats/careers/v2/searchResults?org=ETS&cws=42",
+   "careers_url": "https://www.etsmtl.ca/a-propos/travailler/emplois-enseignement-recherche",
+   "unknown_location_ok": true,
+   "clearance_risk": "low",
+   "french_likely": true,
+   "added": "2026-10-12",
+   "notes": "Taleo Business Edition career section 42 (Enseignement et recherche: research staff, postdocs, faculty). Cards carry the job category (e.g. Recherche) where the parser reads a location, hence unknown_location_ok. ETS announced on 2026-04-02 a move off Taleo planned for spring 2026; on 2026-10-12 www.etsmtl.ca still links this board. Section 37 (gestion et soutien) is the same URL with cws=37."
+  },
+  {
+   "name": "Western University (staff research roles)",
+   "sector": "research",
+   "cities": [
+    "London, ON"
+   ],
+   "ats": "peoplesoft_cg",
+   "url": "https://recruit.uwo.ca/psc/hrprdwebER/EMPLOYEE/HRMS/c/HRS_HRAM_FL.HRS_CG_SEARCH_FL.GBL?Page=HRS_APP_SCHJOB_FL&Action=U",
+   "careers_url": "https://www.uwo.ca/careers/index.html",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "added": "2026-10-12",
+   "skip_title_re": "^Course - "
+  },
+  {
+   "name": "McMaster University (staff research roles)",
+   "sector": "research",
+   "cities": [
+    "Hamilton, ON"
+   ],
+   "ats": "peoplesoft_classic",
+   "url": "https://careers.mcmaster.ca/psp/prcsprd/EMPLOYEE/HRMS/c/HRS_HRAM.HRS_APP_SCHJOB.GBL?Page=HRS_APP_SCHJOB&Action=U&FOCUS=Applicant&SiteId=1001&customTab=MCM_STAFF_POS&IgnoreParamTempl=customTab",
+   "job_url_template": "https://careers.mcmaster.ca/psp/prcsprd/EMPLOYEE/HRMS/c/HRS_HRAM.HRS_APP_SCHJOB.GBL?Page=HRS_APP_JBPST&Action=U&FOCUS=Applicant&SiteId=1001&JobOpeningId={id}&PostingSeq=1",
+   "careers_url": "https://hr.mcmaster.ca/careers/current-opportunities/",
+   "unknown_location_ok": true,
+   "clearance_risk": "low",
+   "french_likely": false,
+   "added": "2026-10-12"
+  },
+  {
+   "name": "York University (staff research roles)",
+   "sector": "research",
+   "cities": [
+    "Toronto, ON"
+   ],
+   "ats": "technomedia",
+   "url": "https://jobs-ca.technomedia.com/yorkuniversity/",
+   "careers_url": "https://jobs-ca.technomedia.com/yorkuniversity/",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "added": "2026-10-12"
+  },
+  {
+   "name": "Université de Sherbrooke (staff research roles)",
+   "sector": "research",
+   "cities": [
+    "Sherbrooke, QC",
+    "Longueuil, QC"
+   ],
+   "ats": "html_rows",
+   "url": "https://www.usherbrooke.ca/emplois/offres?id=20&tx_udesrechercheemplois_list%5BdetailsId%5D=18&tx_udesrechercheemplois_list%5BJobs%5D=1&tx_udesrechercheemplois_list%5Baction%5D=search&type=993622&sort=DATEDEBUTAFFICHAGE%20desc&openedAccordions=DESCGROUPEEMPLOI",
+   "extra_urls": [
+    "https://www.usherbrooke.ca/emplois/offres?id=20&tx_udesrechercheemplois_list%5BdetailsId%5D=18&tx_udesrechercheemplois_list%5BJobs%5D=1&tx_udesrechercheemplois_list%5Baction%5D=search&type=993622&sort=DATEDEBUTAFFICHAGE%20desc&openedAccordions=DESCGROUPEEMPLOI&currentPage=2",
+    "https://www.usherbrooke.ca/emplois/offres?id=20&tx_udesrechercheemplois_list%5BdetailsId%5D=18&tx_udesrechercheemplois_list%5BJobs%5D=1&tx_udesrechercheemplois_list%5Baction%5D=search&type=993622&sort=DATEDEBUTAFFICHAGE%20desc&openedAccordions=DESCGROUPEEMPLOI&currentPage=3"
+   ],
+   "json_path": "results",
+   "unquote": true,
+   "base_url": "https://www.usherbrooke.ca/emplois/offres",
+   "row_re": "<div class=\"listResultEntry\">\\s*<a href=\"(?P<url>[^\"]+)\">\\s*<h5>(?P<title>.*?)</h5>\\s*</a>(?:\\s*<p class=\"description\">(?P<snippet>.*?)</p>)?\\s*<p class=\"details\">\\s*<span>No\\s*(?P<no>[^<]*)</span>\\s*(?:<span>(?P<location>[^<]*)</span>)?(?P<terms>.*?)</p>",
+   "careers_url": "https://www.usherbrooke.ca/emplois/offres",
+   "clearance_risk": "low",
+   "french_likely": true,
+   "added": "2026-10-12"
+  },
+  {
+   "name": "Ontario Tech University (staff research roles)",
+   "sector": "research",
+   "cities": [
+    "Oshawa, ON"
+   ],
+   "ats": "csod",
+   "url": "https://ontariotechu.csod.com/ux/ats/careersite/4/home/",
+   "careers_url": "https://ontariotechu.csod.com/ux/ats/careersite/4/home/",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "added": "2026-10-12"
+  },
+  {
+   "name": "Mecka",
+   "sector": "robotics",
+   "cities": [
+    "Richmond Hill, ON"
+   ],
+   "ats": "json_map",
+   "url": "https://api.ashbyhq.com/posting-api/job-board/mecka.ai",
+   "map": {
+    "list": "jobs",
+    "title": "title",
+    "url": "jobUrl",
+    "posted": "publishedAt",
+    "snippet": "department",
+    "location": [
+     "location",
+     "address.postalAddress.addressRegion",
+     "address.postalAddress.addressCountry",
+     "secondaryLocations.0.location",
+     "secondaryLocations.0.address.postalAddress.addressRegion",
+     "secondaryLocations.1.location",
+     "secondaryLocations.1.address.postalAddress.addressRegion"
+    ]
+   },
+   "careers_url": "https://jobs.ashbyhq.com/mecka.ai",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "notes": "Ashby posting API read with json_map so the location carries the postal region and country: the stock ashby parser gives 'Toronto GTA; New York', which classify() drops as outside_onqc (no ON/Canada token). Robotics / embodied-AI data-capture startup (HQ New York); on-site hardware, calibration, SLAM and ML team in Richmond Hill, ON (Ashby postalAddress). Most current postings ask 3+ years.",
+   "added": "2026-10-12"
+  },
+  {
+   "name": "CM Labs Simulations",
+   "sector": "robotics",
+   "cities": [
+    "Montreal, QC"
+   ],
+   "ats": "bamboohr",
+   "url": "https://cmlabs.bamboohr.com/careers/list",
+   "careers_url": "https://cm-labs.com/en/careers/",
+   "clearance_risk": "low",
+   "french_likely": true,
+   "notes": "Vortex Studio real-time dynamics simulation and heavy-equipment training simulators, head office 645 Wellington, Montreal. Small board (3 postings on 2026-10-12: two Montreal interns, one Utah QA role), so 0 kept today; kept for simulation / robotics developer and engineer openings.",
+   "added": "2026-10-12"
+  },
+  {
+   "name": "Caterpillar (Laval autonomy / Cat MineStar)",
+   "sector": "industrial",
+   "cities": [
+    "Laval, QC",
+    "Montreal, QC",
+    "Burlington, ON",
+    "Woodbridge, ON"
+   ],
+   "ats": "workday",
+   "url": "https://cat.wd5.myworkdayjobs.com/wday/cxs/cat/CaterpillarCareers/jobs",
+   "search_terms": [
+    "Laval",
+    "Quebec",
+    "Ontario"
+   ],
+   "careers_url": "https://careers.caterpillar.com/en/jobs/?country=Canada",
+   "clearance_risk": "low",
+   "french_likely": true,
+   "notes": "Global board (927 postings); the parser's Canada facet (locationCountry) reads only the Canadian rows (7 on 2026-10-12). Laval builds Cat MineStar autonomy for surface mining. Laval postings say French is preferred and 'Canada Work Authorization Sponsorship Offered: None'.",
+   "added": "2026-10-12"
+  },
+  {
+   "name": "Sotera Health (Nordion, Ottawa)",
+   "sector": "medtech",
+   "cities": [
+    "Ottawa, ON",
+    "Toronto, ON"
+   ],
+   "ats": "workday",
+   "url": "https://soterahealth.wd501.myworkdayjobs.com/wday/cxs/soterahealth/External/jobs",
+   "search_terms": [
+    "Ottawa",
+    "Ontario",
+    "engineer"
+   ],
+   "careers_url": "https://soterahealth.com/careers/",
+   "clearance_risk": "low",
+   "french_likely": false,
+   "notes": "Nordion (Co-60 sealed sources, gamma irradiators) in Ottawa, plus two Toronto plant roles (maintenance technician, operator). 12 Canadian rows on 2026-10-12; engineering ones are mechanical (3+ years preferred) and an Engineering Manager, Controls & Industrial Automation who leads a team of controls engineers. Low yield expected.",
+   "added": "2026-10-12"
+  },
+  {
+   "name": "Tetra Tech Canada",
+   "sector": "consulting",
+   "cities": [
+    "Toronto, ON",
+    "Montreal, QC"
+   ],
+   "ats": "selectminds",
+   "url": "https://tetratech.referrals.selectminds.com/jobs/search?all",
+   "facet": "country/7570",
+   "max_pages": 20,
+   "careers_url": "https://tetratech.referrals.selectminds.com/",
+   "clearance_risk": "low",
+   "french_likely": false,
    "added": "2026-10-12"
   }
  ],

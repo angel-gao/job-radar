@@ -1,5 +1,19 @@
 # Changelog
 
+## 2026-10-12 (second pass): 37 more boards, link and scoring fixes
+
+Sources
+- Employer boards: 228 to 265, each checked against its robots.txt and tested with the fetcher. Robotics and industry: Mecka (Richmond Hill), CM Labs, Caterpillar (Laval autonomy), Celestica, Medtronic, Martinrea, OPTEL, Wabtec, Sotera Health. Utilities and rail: Enbridge, CN, Énergir. Consultancies with rail, signalling and electrical roles: GHD, Arcadis, Parsons, Mott MacDonald, Black & Veatch, Worley, Tetra Tech. AI and chips: Palona AI, Altis Labs, Google DeepMind, LG AI Research, Wind River, Infineon. Research hospitals and institutes: Sunnybrook Research Institute, SickKids, Holland Bloorview, SNOLAB, Perimeter Institute. University staff boards: McMaster, Western, York, Guelph, Ontario Tech, ÉTS and Université de Sherbrooke.
+- New parsers: PeopleSoft Candidate Gateway (Fluid and classic), Technomedia, Cornerstone, Talcura, Attrax sitemap and SelectMinds. `html_rows` reads several pages and percent-encoded HTML.
+- Left out: boards whose robots.txt disallows the job pages (Concordia, Queen's, Sanmina, Premier Tech search), bot challenges (Jacobs, CPKC, ISA, Ross Video's own board) and boards whose terms forbid automated collection (CareersInRobotics, AIAA's career centre).
+
+Fixes
+- Workday boards on myworkdaysite.com (Magna, Microchip) had job links that answer HTTP 500; links now use `/recruiting/<tenant>/<site>/`.
+- Workday rows without a location field take it from the first bullet field or from the place in the job link. Before, they got the board's default cities, so US postings at Thomson Reuters could pass as Toronto.
+- `skip_title_re` works on every board.
+- `verify_pages.py` retries an unreadable page once in a cookie session and follows PeopleSoft portal frames.
+- Scoring: apprentices, inspectors, ship engineer ranks, engineering technicians, quality control, and sales or recruiting titles are dropped even when the title mentions robots. French civil titles (bridges, stormwater, roads) count as off-field. "construction" no longer matches inside "Reconstruction", and "apprentissage" (machine learning) no longer counts as a new-grad word.
+
 ## 2026-10-12: source expansion and repairs
 
 Sources

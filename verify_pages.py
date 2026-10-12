@@ -69,12 +69,14 @@ def fetch_posting(url, row=None):
                 return "linkedin_guest", text_of(t)
             return "linkedin_guest", None
         if "myworkdaysite.com" in host:
-            # https://wd3.myworkdaysite.com/<Site>/job/<rest> (Magna): the tenant is the site name in lower case
+            # https://wd3.myworkdaysite.com/[en-US/]recruiting/<tenant>/<Site>/job/<rest>; rows written before
+            # 2026-10-12 used /<Site>/job/<rest>, where the tenant is the site name in lower case (Magna)
             parts = [x for x in p.path.split("/") if x]
             if "job" in parts:
                 i = parts.index("job")
                 site = parts[i - 1]
-                t = _workday_api_text("https://%s/wday/cxs/%s/%s/%s" % (host, site.lower(), site, "/".join(parts[i:])))
+                tenant = parts[parts.index("recruiting") + 1] if "recruiting" in parts[:i - 1] else site.lower()
+                t = _workday_api_text("https://%s/wday/cxs/%s/%s/%s" % (host, tenant, site, "/".join(parts[i:])))
                 if t:
                     return "workday_cxs", t
         if "myworkdayjobs.com" in host:
@@ -145,6 +147,16 @@ def fetch_posting(url, row=None):
                 return "bamboohr_api", "%s %s\n%s" % (jo.get("jobOpeningName", ""), json.dumps(jo.get("location", {})),
                                                      text_of(jo.get("description", "")))
         st, t = jr.http(u, timeout=30)
+        if not (st and st < 400 and len(text_of(t)) > 400):
+            # PeopleSoft, Talcura and similar boards set a session cookie and redirect before they show a posting
+            sess = jr._Session()
+            st2, t2 = sess.req(u, timeout=30)
+            fm = re.search(r'id="ptifrmtgtframe"[^>]*\ssrc="([^"]+)"', t2 or "") if st2 and st2 < 400 else None
+            if fm:
+                # PeopleSoft portal pages (McMaster) wrap the posting in an iframe that opens only in the same session
+                st2, t2 = sess.req(jr.html.unescape(fm.group(1)), headers={"Referer": u}, timeout=30)
+            if st2 and st2 < 400:
+                st, t = st2, t2
         if st and st < 400:
             tx = text_of(t)
             # JSON-LD JobPosting often carries the full description even on JS-heavy pages
