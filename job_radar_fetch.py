@@ -2943,7 +2943,7 @@ def _fr_relative_date(s):
 
 
 def run_espresso(cfg, skip):
-    """Espresso-Jobs (Quebec tech board), server-rendered search pages (robots.txt allows Claude agents)."""
+    """Espresso-Jobs (Quebec tech board), server-rendered search pages (robots.txt allows automated reading of these pages)."""
     stats = {"requests": 0, "n": 0, "status": "ok", "errors": []}
     if skip or not cfg.get("enabled", False):
         stats["status"] = "skipped"
